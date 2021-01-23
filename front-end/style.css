@@ -1,0 +1,51 @@
+/* Properties for all elements  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Properties for body  */
+body {
+  background-color: #ffffff;
+}
+
+/* Properties for sidebar  */
+.sidebar {
+  width: 200px;
+  height: 100%;
+  background: #ffffff;
+  position: fixed;
+}
+
+/* Properties for list within sidebar  */
+.sidebar ul li {
+  padding: 20px;
+  border-bottom: 1px solid #bdb8d7;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Properties for list text  */
+.sidebar ul li a {
+  color: #000000;
+  display: block;
+}
+
+/* Properties for fa icons  */
+.sidebar ul li a .fas {
+  width: 25px;
+}
+
+/* Properties for list hover colour  */
+.sidebar ul li:hover {
+  background-color: #b2b9b4;
+}
+
+/* Properties for list hover text colour  */
+.sidebar ul li:hover a {
+  color: rgb(255, 255, 255);
+}
