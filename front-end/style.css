@@ -13,8 +13,13 @@ body {
   background-color: #ffffff;
 }
 
+.wrapper {
+  display: flex;
+  position: relative;
+}
+
 /* Properties for sidebar  */
-.sidebar {
+.wrapper .sidebar {
   width: 200px;
   height: 100%;
   background: #ffffff;
@@ -22,7 +27,7 @@ body {
 }
 
 /* Properties for list within sidebar  */
-.sidebar ul li {
+.wrapper .sidebar ul li {
   padding: 20px;
   border-bottom: 1px solid #bdb8d7;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -30,37 +35,42 @@ body {
 }
 
 /* Properties for list text  */
-.sidebar ul li a {
+.wrapper .sidebar ul li a {
   color: #000000;
   display: block;
 }
 
 /* Properties for fa icons  */
-.sidebar ul li a .fas {
+.wrapper .sidebar ul li a .fas {
   width: 25px;
 }
 
 /* Properties for list hover colour  */
-.sidebar ul li:hover {
+.wrapper .sidebar ul li:hover {
   background-color: #b2b9b4;
 }
 
 /* Properties for list hover text colour  */
-.sidebar ul li:hover a {
+.wrapper .sidebar ul li:hover a {
   color: rgb(255, 255, 255);
 }
 
 /* Properties for main content  */
-.main_content {
+.wrapper .main_content {
   width: 100%;
   margin-left: 200px;
 }
 
 /* Properties for header  */
-.main_content .header {
+.wrapper .main_content .header {
   font-size: 30px;
   padding: 42px;
   background: #4cbb68;
   color: #ffffff;
   border-bottom: 12px solid #4dda70;
+}
+
+/* Properties for logo  */
+.wrapper .main_content .logo {
+  float: left;
 }
