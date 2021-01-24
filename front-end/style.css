@@ -38,6 +38,7 @@ body {
 .wrapper .sidebar ul li a {
   color: #000000;
   display: block;
+  font-size: 20px;
 }
 
 /* Properties for fa icons  */
@@ -47,12 +48,12 @@ body {
 
 /* Properties for list hover colour  */
 .wrapper .sidebar ul li:hover {
-  background-color: #b2b9b4;
+  background-color: green;
 }
 
 /* Properties for list hover text colour  */
 .wrapper .sidebar ul li:hover a {
-  color: rgb(255, 255, 255);
+  color: #ffffff;
 }
 
 /* Properties for main content  */
