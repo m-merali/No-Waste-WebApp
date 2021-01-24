@@ -49,3 +49,18 @@ body {
 .sidebar ul li:hover a {
   color: rgb(255, 255, 255);
 }
+
+/* Properties for main content  */
+.main_content {
+  width: 100%;
+  margin-left: 200px;
+}
+
+/* Properties for header  */
+.main_content .header {
+  font-size: 30px;
+  padding: 42px;
+  background: #4cbb68;
+  color: #ffffff;
+  border-bottom: 12px solid #4dda70;
+}
