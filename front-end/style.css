@@ -63,14 +63,17 @@ body {
 
 /* Properties for header  */
 .wrapper .main_content .header {
-  font-size: 30px;
-  padding: 42px;
-  background: #4cbb68;
+  height: 220px;
+  font-size: 50px;
+  padding: 32px;
+  background-image: linear-gradient(to right, green, yellow);
   color: #ffffff;
   border-bottom: 12px solid #4dda70;
+  text-align: left;
 }
 
 /* Properties for logo  */
 .wrapper .main_content .logo {
   float: left;
+  padding: 28px;
 }
