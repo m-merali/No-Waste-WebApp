@@ -119,7 +119,7 @@ img {
 
 /* buttons */
 .button {
-  background-color: #000000;
+  background-color: black;
   border-radius: 25px;
   color: rgb(255, 255, 255);
   padding: 15px 32px;
@@ -130,6 +130,11 @@ img {
   margin: 4px 2px;
   cursor: pointer;
   width: 100%;
+}
+
+.button:hover {
+  background-color: #a5d200;
+  color: black;
 }
 
 /* Footer */
