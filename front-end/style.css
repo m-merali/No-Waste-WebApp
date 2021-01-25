@@ -1,160 +1,39 @@
-/* Properties for all elements  */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Lato", sans-serif;
   list-style: none;
-  text-decoration: none;
-  font-family: "Poppins", sans-serif;
 }
 
-/* Properties for body  */
 body {
-  background: url(/images/stripes-light.png) repeat 0 0;
+  background-color: #a5d200;
 }
 
-.wrapper {
+/* Navbar */
+.navbar {
+  background-color: black;
+  color: #fff;
+  height: 70px;
+}
+
+.navbar ul {
   display: flex;
-  position: relative;
 }
 
-/* Properties for sidebar  */
-.wrapper .sidebar {
-  width: 200px;
-  height: 100%;
-  background: #f2f2f2;
-  position: fixed;
+.navbar a {
+  color: #fff;
+  padding: 10px;
+  margin: 0 5px;
+  text-decoration: none;
 }
 
-/* Properties for list within sidebar  */
-.wrapper .sidebar ul li {
-  padding: 20px;
-  border-bottom: 1px solid #bdb8d7;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+.navbar a:hover {
+  color: #a5d200;
 }
 
-/* Properties for list text  */
-.wrapper .sidebar ul li a {
-  color: #000000;
-  display: block;
-  font-size: 20px;
-}
-
-/* Properties for fa icons  */
-.wrapper .sidebar ul li a .fas {
-  width: 25px;
-}
-
-/* Properties for list hover colour  */
-.wrapper .sidebar ul li:hover {
-  background-color: green;
-}
-
-/* Properties for list hover text colour  */
-.wrapper .sidebar ul li:hover a {
-  color: #ffffff;
-}
-
-/* Properties for main content  */
-.wrapper .main_content {
-  width: 100%;
-  margin-left: 200px;
-}
-
-/* Properties for header  */
-.wrapper .main_content .header {
-  height: 220px;
-  font-size: 50px;
-  padding: 32px;
-  background-image: linear-gradient(to right, green, yellow);
-  color: #ffffff;
-  border-bottom: 20px solid #4dda70;
-  text-align: left;
-}
-
-/* Properties for logo  */
-.wrapper .main_content .logo {
-  float: left;
-  padding: 28px;
-}
-
-/* Properties for about us title */
-.wrapper .main_content .about_us_title {
-  height: 80px;
-  background: #4ba500;
-  text-align: center;
-  font-size: 20px;
-  padding: 12px;
-  color: black;
-  box-shadow: 0 0 1em 1em rgb(204, 204, 204);
-}
-
-/* Properties for div underneath about us  */
-.wrapper .main_content .about_us_div {
-  height: 150px;
-  text-align: left;
-  font-size: 20px;
-  padding: 20px;
-  color: black;
-}
-
-/* Properties for what can I recycle title   */
-.wrapper .main_content .what_recycle_title {
-  height: 80px;
-  background: #4ba500;
-  text-align: center;
-  font-size: 20px;
-  padding: 12px;
-  color: black;
-  box-shadow: 0 0 1em 1em #ccc;
-}
-
-/* Properties for div underneath what can I recycle  */
-.wrapper .main_content .what_recycle_div {
-  height: 150px;
-  text-align: left;
-  font-size: 20px;
-  padding: 35px;
-  color: black;
-}
-
-/* Properties for where can I recycle title  */
-.wrapper .main_content .where_recycle_title {
-  height: 80px;
-  background: #4ba500;
-  text-align: center;
-  font-size: 20px;
-  padding: 12px;
-  color: black;
-  box-shadow: 0 0 1em 1em #ccc;
-}
-
-/* Properties for div underneath where can I recycle  */
-.wrapper .main_content .where_recycle_div {
-  height: 150px;
-  text-align: left;
-  font-size: 20px;
-  padding: 35px;
-  color: black;
-}
-
-/* Properties for collection dates title  */
-.wrapper .main_content .collection_dates_title {
-  height: 80px;
-  background: #4ba500;
-  text-align: center;
-  font-size: 20px;
-  padding: 12px;
-  color: black;
-  box-shadow: 0 0 1em 1em #ccc;
-}
-
-/* Properties for div underneath collection dates  */
-.wrapper .main_content .collection_dates_div {
-  height: 150px;
-  text-align: left;
-  font-size: 20px;
-  padding: 35px;
-  color: black;
+.navbar .flex {
+  justify-content: space-between;
 }
