@@ -104,3 +104,18 @@ body {
   grid-template-columns: 55% auto;
   gap: 30px;
 }
+
+/* buttons */
+.button {
+  background-color: #000000;
+  border-radius: 25px;
+  color: rgb(255, 255, 255);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
+}
