@@ -133,3 +133,38 @@ body {
 .footer .social a {
   margin: 0 10px;
 }
+
+/* Tablets and under */
+@media (max-width: 768px) {
+  .grid,
+  .mission .grid,
+  .today .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .mission {
+    height: auto;
+  }
+
+  .mission-text {
+    text-align: center;
+    margin-top: 40px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .navbar {
+    height: 110px;
+  }
+
+  .navbar .flex {
+    flex-direction: column;
+  }
+
+  .navbar ul {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
