@@ -25,6 +25,10 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+.text-center {
+  text-align: center;
+}
+
 /* Margin */
 .my-1 {
   margin: 1rem 0;
