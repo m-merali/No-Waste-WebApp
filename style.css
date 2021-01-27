@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #a5d200;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 10px 0;
+}
+
+img {
+  width: 100%;
+}
+
+/* Navbar */
+.navbar {
+  background-color: black;
+  color: #fff;
+  height: 70px;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar a {
+  color: #fff;
+  padding: 10px;
+  margin: 0 5px;
+}
+
+.navbar a:hover {
+  color: #a5d200;
+}
+
+.navbar .flex {
+  justify-content: space-between;
+}
+
+/* Our Mission */
+.mission {
+  height: 400px;
+  color: #fff;
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 40px;
+}
+
+.mission h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.mission p {
+  margin: 20px 0;
+  text-align: center;
+  font-size: 20px;
+}
+
+.mission .grid {
+  overflow: visible;
+  grid-template-columns: 55% auto;
+  gap: 30px;
+}
+
+/* Slant design */
+.mission::before,
+.mission::after {
+  content: "";
+  position: absolute;
+  height: 100px;
+  bottom: -70px;
+  right: 0;
+  left: 0;
+  background: #fff;
+  transform: skewY(-3deg);
+  -webkit-transform: skewY(-1.8deg);
+  -moz-transform: skewY(-3deg);
+  -ms-transform: skewY(-3deg);
+}
+
+/* What would you like to do today */
+.today {
+  height: 400px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  position: relative;
+}
+
+.today h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.today p {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.today .grid {
+  overflow: visible;
+  grid-template-columns: 55% auto;
+  gap: 30px;
+}
+
+/* buttons */
+.button {
+  background-color: #000000;
+  border-radius: 25px;
+  color: rgb(255, 255, 255);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Footer */
+.footer {
+  color: white;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer .social a {
+  margin: 0 10px;
+}
+
+/* Tablets and under */
+@media (max-width: 768px) {
+  .grid,
+  .mission .grid,
+  .today .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .mission {
+    height: auto;
+  }
+
+  .mission-text {
+    text-align: center;
+    margin-top: 40px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .navbar {
+    height: 110px;
+  }
+
+  .navbar .flex {
+    flex-direction: column;
+  }
+
+  .navbar ul {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
