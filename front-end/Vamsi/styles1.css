@@ -2,7 +2,7 @@
   @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
   body{
-    background-color: rgb(110, 197, 110) ;
+    background-color: #a5d200 ;
     background-repeat:no-repeat;
     background-attachment: fixed;  
     background-size: cover;
@@ -12,23 +12,26 @@
   }
   ul {
       list-style-type: none;
-      text-align: center  ;
+      text-align: center ;
       }
   /* Navbar */
   .navbar {
     background-color: black;
     color: #fff;
-    height: 90px;
+    height: 70px;
+    
   }
   
   .navbar ul {
     display: flex;
+    margin-top: 10px;
   }
   
   .navbar a {
     color: #fff;
     padding: 10px;
     margin: 0 5px;
+    text-decoration: none;
   }
   
   .navbar a:hover {
@@ -51,9 +54,9 @@
   
   .searchTerm {
     width: 100%;
-    border: 3px solid black;
+    border: 5px solid black;
     border-right: none;
-    padding: 10px;
+    padding: 18px;
     height: 20px;
     border-radius: 5px 0 0 5px;
     outline: none;
@@ -84,15 +87,20 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0 40px;
+  }
   
-  /* button
-        .block {
-        display: block;
-        width: 25%;
-        border: none;
-        background-color: #4CAF50;
-        padding: 14px 28px;
-        font-size: 16px;
-        cursor: pointer;
-        text-align: center;
-      }   */
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  
+      
