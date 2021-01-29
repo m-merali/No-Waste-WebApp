@@ -1,13 +1,102 @@
+  /* adds padding to the navbar and keeps them all within border*/
+ * { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+} 
+  /* Whole background*/
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #a5d200;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 10px 0;
+}
+
+img {
+  width: 100%;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #050505;
+  color: #fff;
+  height: 70px;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar a {
+  color: #ffffff;
+  padding: 10px;
+  margin: 0 5px;
+}
+
+.navbar a:hover {
+  color: #ffffff;
+}
+
+.navbar .flex {
+  justify-content: space-between;
+}
+
 /* Footer */
 .footer {
-    color: white;
+  color: white;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer .social a {
+  margin: 0 10px;
+}
+
+/* Tablets and under */
+@media (max-width: 768px) {
+  .grid,
+  .mission .grid,
+  .today .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
   }
-  
-  .footer a {
-    color: white;
-    text-decoration: none;
+
+  .mission {
+    height: auto;
   }
-  
-  .footer .social a {
-    margin: 0 10px;
+
+  .mission-text {
+    text-align: center;
+    margin-top: 40px;
   }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .navbar {
+    height: 110px;
+  }
+
+  .navbar .flex {
+    flex-direction: column;
+  }
+
+  .navbar ul {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
