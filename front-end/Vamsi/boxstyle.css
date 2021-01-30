@@ -10,6 +10,8 @@
     justify-content: center;
     margin-top: 200px;
     padding: 10px;
+    margin-left: 130px;
+    margin-right: 130px;
   }
   
   .box-1{
@@ -21,11 +23,7 @@
     margin: 20px;
     position: relative;
   }
-  .block{
-      float: left;
-      width:auto;
-      border:15px solid grey;
-  }
+  
   
    /* button */
         .select {

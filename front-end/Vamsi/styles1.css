@@ -2,13 +2,24 @@
   @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
   body{
-    background-color: #a5d200 ;
+    background-image: url('green.jpg') ;
     background-repeat:no-repeat;
     background-attachment: fixed;  
     background-size: cover;
     
   
     font-family: 'Open Sans', sans-serif; 
+  }
+
+  .heading_contain{
+    width: 500px;
+    margin: auto;
+
+  }
+  .heading {
+    font-size: 25px;
+    color: black;
+     margin-top: 60px;  
   }
   ul {
       list-style-type: none;
@@ -51,9 +62,13 @@
     position: relative;
     display: flex;
   }
+   .search h1{
+    font-family: Tahoma;
+    
+  } 
   
   .searchTerm {
-    width: 100%;
+    width: 120%;
     border: 5px solid black;
     border-right: none;
     padding: 18px;
@@ -63,12 +78,12 @@
     color: black;
   }
   
-  .searchTerm:focus{
+   .searchTerm:focus{
     color: black;
-  }
+  } 
   
-  .searchButton {
-    width: 40px;
+   .searchButton {
+    width: 80px;
     height: 46px;
     border: 1px solid black;
     background: black;
@@ -77,16 +92,18 @@
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     font-size: 20px;
-  }
+  } 
+
   
   /*Resize the wrap to see the search bar change!*/
   .wrap{
-    width: 30%;
+    width: 40%;
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+    
+  } 
 
   .container {
     max-width: 1100px;
