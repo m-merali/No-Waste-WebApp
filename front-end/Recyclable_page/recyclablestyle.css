@@ -45,7 +45,7 @@ img {
 }
 
 .navbar a:hover {
-  color: #ffffff;
+  border-bottom: 2px #ffffff solid;
 }
 
 .navbar .flex {
