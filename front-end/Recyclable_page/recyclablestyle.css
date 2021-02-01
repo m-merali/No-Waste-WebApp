@@ -1,6 +1,7 @@
   /* adds padding to the navbar and keeps them all within border*/
  * { 
   margin: 0;
+
   padding: 0;
   box-sizing: border-box;
   list-style: none;
@@ -8,11 +9,8 @@
   /* Whole background*/
 body {
   font-family: "Lato", sans-serif;
-  background-color: #a5d200;
-}
-
-ul {
-  list-style-type: none;
+  background-color: #ffffff;
+  /*background-image: url(../images/making-a-case-for-climate-change-adaptation-scaled_2560x1648_acf_cropped-1.jpg);*/
 }
 
 a {
@@ -27,11 +25,21 @@ img {
   width: 100%;
 }
 
+
+/*Navbar positioning*/
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 /* Navbar */
 .navbar {
   background-color: #050505;
   color: #fff;
   height: 70px;
+ 
 }
 
 .navbar ul {
@@ -45,12 +53,49 @@ img {
 }
 
 .navbar a:hover {
-  border-bottom: 2px #ffffff solid;
-}
+  color: #a5d200;
+  /*border-bottom: 2px #ffffff solid;*/
+} 
 
 .navbar .flex {
   justify-content: space-between;
 }
+
+
+/* Recycle title*/
+.Recycle {
+  background-image: url(../images/1156725.jpg);
+  background-size: cover;
+  background-position: top;
+  text-align: center;
+  text-decoration: 10px underline;
+  text-decoration-color: #a5d200;
+  color: rgb(255, 255, 255);
+  font-size: 35px;
+  padding: 100px;
+  margin-top: -20px;
+}
+.Recycle a:hover{
+  border-bottom: 2px #ffffff solid;
+
+} 
+/* What would you like to explore?*/
+.explore{
+  padding: 25px;
+  background-color: #a5d200;
+}
+.explore-text {
+  text-align: center;
+  font-size: larger;
+  font-weight: bold;
+  color: white;
+}
+#Recyclableitem{
+    background-color:transparent;
+    border: 0px;
+    padding: 20px 50px;
+}
+
 
 /* Footer */
 .footer {
