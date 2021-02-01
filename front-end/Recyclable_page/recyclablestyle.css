@@ -39,7 +39,6 @@ img {
   background-color: #050505;
   color: #fff;
   height: 70px;
- 
 }
 
 .navbar ul {
@@ -78,10 +77,7 @@ img {
   position: relative;
   
 }
-.Recycle a:hover{
-  border-bottom: 2px #ffffff solid;
 
-} 
 /*Slant*/
 .Recycle::before,
 .Recycle::after{
@@ -116,23 +112,35 @@ img {
   text-align: left;
 }
 .explore p{
-  text-align: left;
-  margin: 65px
+  text-align: center;
 }
 .grid{
   display: grid;
-  grid-template-columns: 400px 200px;
+  grid-template-columns: 800px 500px;
+  gap: 300px;
 }
-.card{
-  background-color: white;
-  border-radius: 10px;
+.Recyclableform{
+  position: center;
+  box-shadow: 1px 4px 8px 1px rgba(0,0,0,0.3);
+  transition: 0.3s;
+  width: 100%;
+  margin:65px;
+  font-weight: bold;
+  color:rgb(255, 255, 255);
+  font-size: 20px;
+}
+/* On mouse-over, add a deeper shadow */
+.Recyclableform:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 /*input area*/
 #Recyclableitem{
     /*background-color:transparent;*/
-    margin-top: 65px;
     border: 0px;
-    padding: 50px 50px;
+    padding: 50px 40px;
+    margin-left: 17.5px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+
 }
 /*Images in a row*/
 .row {
@@ -148,6 +156,9 @@ img {
 /* Footer */
 .footer {
   color: white;
+  background-color: #a5d200;
+  padding: 20px;
+  box-shadow: 0px -10px 10px rgba(0,0,0,0.4);
 }
 
 .footer a {
@@ -157,6 +168,15 @@ img {
 
 .footer .social a {
   margin: 0 10px;
+}
+
+.grid1{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 /* Tablets and under */
