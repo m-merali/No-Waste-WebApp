@@ -69,12 +69,14 @@ img {
   background-position: top;
   text-align: center;
   text-decoration: 10px underline;
-  text-decoration-color: #a5d200;
+  text-decoration-color: #a5d200; 
+  text-shadow: 0px 3px 10px rgba(0,0,0,0.2);
   color: rgb(255, 255, 255);
   font-size: 35px;
   padding: 250px;
   margin-top: -20px;
   position: relative;
+  
 }
 .Recycle a:hover{
   border-bottom: 2px #ffffff solid;
@@ -94,12 +96,14 @@ img {
   -webkit-transform: skewY(-1deg);
   -moz-transform: skewY(-3deg);
   -ms-transform: skewY(-3deg);
+  box-shadow: 0px -10px 10px rgba(0,0,0,0.4);
 }
 
 /* What would you like to explore?*/
 .explore{
   padding: 20px;
   background-color: #a5d200;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
 }
 .explore-text {
   text-align: center;
@@ -118,6 +122,10 @@ img {
 .grid{
   display: grid;
   grid-template-columns: 400px 200px;
+}
+.card{
+  background-color: white;
+  border-radius: 10px;
 }
 /*input area*/
 #Recyclableitem{
