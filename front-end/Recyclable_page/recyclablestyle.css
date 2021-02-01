@@ -72,31 +72,71 @@ img {
   text-decoration-color: #a5d200;
   color: rgb(255, 255, 255);
   font-size: 35px;
-  padding: 100px;
+  padding: 250px;
   margin-top: -20px;
+  position: relative;
 }
 .Recycle a:hover{
   border-bottom: 2px #ffffff solid;
 
 } 
+/*Slant*/
+.Recycle::before,
+.Recycle::after{
+  content:'';
+  position:absolute;
+  height:  50px;
+  bottom: -30px;
+  right: 0;
+  left: 0;
+  background: #a5d200;
+  transform: skewY(-3deg);
+  -webkit-transform: skewY(-1deg);
+  -moz-transform: skewY(-3deg);
+  -ms-transform: skewY(-3deg);
+}
+
 /* What would you like to explore?*/
 .explore{
-  padding: 25px;
+  padding: 20px;
   background-color: #a5d200;
 }
 .explore-text {
   text-align: center;
-  font-size: larger;
-  font-weight: bold;
+  font-size: large;
   color: white;
 }
+.explore h1{
+  font-size: 30px;
+  margin: 65px;
+  text-align: left;
+}
+.explore p{
+  text-align: left;
+  margin: 65px
+}
+.grid{
+  display: grid;
+  grid-template-columns: 400px 200px;
+}
+/*input area*/
 #Recyclableitem{
-    background-color:transparent;
+    /*background-color:transparent;*/
+    margin-top: 65px;
     border: 0px;
-    padding: 20px 50px;
+    padding: 50px 50px;
+}
+/*Images in a row*/
+.row {
+  display: flex;
+  padding: 30px;
 }
 
-
+.column {
+  flex: 33.33%;
+  padding: 20px;
+}
+  
 /* Footer */
 .footer {
   color: white;
