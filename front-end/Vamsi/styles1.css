@@ -2,7 +2,7 @@
   @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
   body{
-    background-image: url('green.jpg') ;
+    background-image: url('r.jpg') ;
     background-repeat:no-repeat;
     background-attachment: fixed;  
     background-size: cover;
@@ -17,9 +17,13 @@
 
   }
   .heading {
+    background-color: grey;
     font-size: 25px;
-    color: black;
-     margin-top: 60px;  
+    color:white;
+     margin-top: 60px; 
+     /* border:5px  solid greenyellow;  */
+     text-align: center;
+     
   }
   ul {
       list-style-type: none;
