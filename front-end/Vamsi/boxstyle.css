@@ -8,10 +8,11 @@
     width: 80%;
     display: flex;
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 100px;
     padding: 10px;
     margin-left: 130px;
     margin-right: 130px;
+    padding-bottom: 200px;
   }
   
   .box-1{
