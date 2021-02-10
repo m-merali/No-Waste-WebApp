@@ -1,19 +1,26 @@
 package com.group20.recyclingapp.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class RecyclingCentre {
 
+	@Id
 	private Long id;
 	private String name;
 	private String localAuthority;
 	private String email;
 	private Integer telephone;
 	
-//no args constructor
+//no argument constructor
 	public RecyclingCentre () {
 		
 	}
 	
-//constuctor	
+//constructor with everything
 	public RecyclingCentre(
 			Long id, 
 			String name, 
@@ -29,7 +36,17 @@ public class RecyclingCentre {
 		this.telephone = telephone;
 	}
 	
-	
+//constructor without id because it will be auto-generated		
+public RecyclingCentre(String name,
+		String localAuthority, 
+		String email, 
+		Integer telephone) {
+	this.name = name;
+	this.localAuthority = localAuthority;
+	this.email = email;
+	this.telephone = telephone;
+}
+
 //getters and setters
 	public Long getId() {
 		return id;
