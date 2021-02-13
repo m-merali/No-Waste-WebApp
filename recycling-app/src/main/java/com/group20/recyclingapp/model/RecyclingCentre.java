@@ -10,7 +10,7 @@ public class RecyclingCentre {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String localAuthority;
+	private String localAuthority; // also called borough
 	private String email;
 	private Integer telephone;
 	
