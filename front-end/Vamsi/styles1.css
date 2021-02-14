@@ -87,11 +87,11 @@
   } 
   
    .searchButton {
-    width: 80px;
+    width: 32px;
     height: 46px;
-    border: 1px solid black;
+    border: 5px solid black;
     background: black;
-    text-align: center;
+    text-align: right;
     color: #fff;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
@@ -101,7 +101,7 @@
   
   /*Resize the wrap to see the search bar change!*/
   .wrap{
-    width: 40%;
+    width: 50%;
     position: absolute;
     top: 40%;
     left: 50%;
@@ -168,7 +168,7 @@
    
   }    
   hr.new1{
-    border: 5px solid green;
+    border: 5px solid #008000;
         
     }
 

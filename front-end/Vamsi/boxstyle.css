@@ -16,7 +16,7 @@
   }
   
   .box-1{
-    background-color: grey;
+    background-color: rgb(141, 211, 101);
     color:white;
     width: 250px;
     /* border: 15px solid greenyellow; */
@@ -31,7 +31,7 @@
         display: block;
         width: auto;
         border: none;
-        background-color:rgb(155, 149, 149);
+        background-color:rgb(12, 1, 1);
         text-decoration: none;
         color: white;
         padding: 14px 28px;
