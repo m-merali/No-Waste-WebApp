@@ -3,17 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" 
-    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" 
-    crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/1dfa4a87c8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="utilities.css" />
+
     <title>No Waste</title>
   </head>
   <body>
-
+    
     <!-- Navbar -->
     <div class="navbar">
       <div class="container flex">
@@ -21,9 +18,9 @@
         <nav>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="Recyclable_page\recyclable.html">Recyclable Items</a></li>
-            <li><a href="Locations_page\locations.html">Recycling Locations</a></li>
-            <li><a href="Collections_page\dates.html">Collection Dates</a></li>
+            <li><a href="recyclable.html">Recyclable Items</a></li>
+            <li><a href="locations.html">Recycling Locations</a></li>
+            <li><a href="dates.html">Collection Dates</a></li>
           </ul>
         </nav>
       </div>
@@ -31,14 +28,22 @@
 
     <!-- Our mission -->
     <section class="mission">
-      <div class="container grid">
-        <div class="mission-text">
+      <class class="container grid">
+        <class class="mission-text">
           <h1>Our Mission</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+            At No waste we want to encourage everyone to actively recycle. Recycling reduces the need for extracting, refining and processing raw materials all of which creates substantial air and water pollution.
           </p>
+          <p>
+            As recycling saves energy it also reduces greenhouse gas emissions, which helps to tackle climate change. You can find a range of tools, which includes searching for recyclable items, local recycling locations and also your collection dates.
+          </p>
+        </class>
+
+        <div>
+          <img src="images/leaf.svg" alt="leaf image" class="leaf" >
         </div>
       </div>
+    </div>
     </section>
 
     <!-- What would you like to do today -->
@@ -49,27 +54,52 @@
           <p>
             Please select an option below
           </p>
-          <a href="Recyclable_page\recyclable.html" class="button">View Recyclable Items</a>
-          <a href="Locations_page\locations.html" class="button">View Local Recycling Locations</a>
-          <a href="Collections_page\dates.html" class="button">View My Collection Dates</a>
+          <a href="recyclable.html" class="button"><span>View Recyclable Items</span></a>
+          <a href="locations.html" class="button"><span>View Local Recycling Locations</span></a>
+          <a href="dates.html" class="button"><span>View My Collection Dates</span></a>
         </div>
       </div>
     </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats-text">
+          <h1>No Waste's Global Impact</h1>
+        </div>
+          <div class="grid grid-3 text-center my-4">
+              <div>
+                  <i class="fas fa-users fa-3x"></i>
+                  <h3>23,749</h3>
+                  <p class="text-secondary">PEOPLE RECYCLING</p>
+              </div>
+              <div>
+                  <i class="fas fa-recycle fa-3x"></i>
+                  <h3>341,876</h3>
+                  <p class="text-secondary">WASTE RECYCLED</p>
+              </div>
+              <div>
+                  <i class="fas fa-heart fa-3x"></i>
+                  <h3>£102,000</h3>
+                  <p class="text-secondary">MONEY FOR CHARITY</p>
+              </div>
+          </div>
+      </div>
+  </section>
 
     <!-- Footer -->
     <footer class="footer py-5">
       <div class="container grid grid-3">
           <div>
-              <h1>Group 20
-              </h1>
+              <h1>Group 20</h1>
               <p>Copyright &copy; 2021</p>
           </div>
           <nav>
               <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="Recyclable_page\recyclable.html">Recyclable Items</a></li>
-                <li><a href="Locations_page\locations.html">Recycling Locations</a></li>
-                <li><a href="Collections_page\dates.html">Collection Dates</a></li>
+                <li><a href="recyclable.html">Recyclable Items</a></li>
+                <li><a href="locations.html">Recycling Locations</a></li>
+                <li><a href="dates.html">Collection Dates</a></li>
               </ul>
           </nav>
           <div class="social">
@@ -79,8 +109,8 @@
           </div>
       </div>
   </footer>
+  
+  <script src="script.js"></script>
     
-    
-
   </body>
 </html>
