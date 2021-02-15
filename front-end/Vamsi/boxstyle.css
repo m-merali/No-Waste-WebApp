@@ -15,14 +15,16 @@
   }
   
   .box-1{
-    background-color: grey;
+    background-color: rgb(128, 128, 128);
     color:white;
     width: 250px;
-    /* border: 15px solid greenyellow; */
+    border: 15px solid rgb(142, 201, 135); 
     padding: 25px;
     margin: 20px;
     position: relative;
   }
+
+  
   
   
    /* button */
