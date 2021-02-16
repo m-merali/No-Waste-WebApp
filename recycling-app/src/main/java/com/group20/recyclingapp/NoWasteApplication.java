@@ -9,6 +9,5 @@ public class NoWasteApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NoWasteApplication.class, args);
 	}
-	
 
 }
