@@ -149,6 +149,67 @@ img {
   gap: 30px;
 }
 
+/* row-fluid  */
+
+
+.ContentContainer{
+  height: auto;
+  width: 100%;
+  background-color: rgb(166 245 195);
+  display: flex;
+  justify-content: center;
+}
+.row-fluid{
+  display: inline;
+  display: flex;
+  align-items: left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#block1{
+  background: url(../front-end/images/plastic.jpg) no-repeat scroll;
+  background-size: cover;
+  
+}
+#block2{
+  background: url(../front-end/images/covid.jpg) no-repeat scroll;
+  background-size: cover;
+}
+#block3{
+  background: url(../front-end/images/gadgets.jpg) no-repeat scroll;
+  background-size: cover;
+}
+.block{
+  
+  width: 334px;
+  height: 200px;
+  padding:0px ;
+  margin:30px ;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  
+}
+.heading{
+  background-color: #517900;
+  padding: 0.5em;
+  box-sizing: border-box;
+  margin-top: 148px;
+  padding-right: 105px;
+  color: #fff;
+  transition: background-color 0.15s ease;
+  }
+ 
+#hed{
+  font: bold;
+  font-size: 16px;
+  padding: auto;
+  width: 100%;
+  align-content: center;
+}
+
 /* buttons */
 .button {
   background-color: black;
@@ -193,6 +254,8 @@ img {
   background-color: #01a66c;
   color: black;
 }
+
+
 
 /* Stats */
 .stats {
