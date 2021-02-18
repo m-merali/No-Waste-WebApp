@@ -82,28 +82,30 @@
 
 .content-container{
     display: flex;
-   
-    height: 500px;
+    margin-top: 43px;
+    height: 3560px;
     width: 100%;
  
 }
 .container-left{
-    background-color: #31775e;
-    width: 50%;
+    width: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start; 
+    margin-left: 242px;
+    padding-right: 294px;
+
+
 }
 .container-right{
     background-color: rgb(221, 33, 80);
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 30%;
+    
 }
-
-
+.videowrapper{
+  margin-top: 26px;
+     margin-bottom: 16px;
+}
 
 
 
