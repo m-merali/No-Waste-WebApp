@@ -78,12 +78,12 @@
    
   
 
-/* contain of platic page content */
+/* contain of covid page content */
 
 .content-container{
     display: flex;
     margin-top: 43px;
-    height: 4120px;
+    height: 2687px;
     width: 100%;
  
 }
@@ -97,12 +97,16 @@
 
 
 }
-
+.container-right{
+    background-color: rgb(221, 33, 80);
+    width: 30%;
     
+}
 .videowrapper{
   margin-top: 26px;
      margin-bottom: 16px;
 }
+
 
 
 

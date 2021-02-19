@@ -8,7 +8,7 @@ h21{
 
 }
 p{
-    font-size: 23px;
+    font-size: 20px;
     font-family: "open-sans","Helvetica Neue",Arial,Helvetica,Helmet,Freesans,sans-serif;
     color: #333;
     line-height: 1.5em;
@@ -16,7 +16,7 @@ p{
 
 }
 h22{
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     font-family: "futura-pt",Arial,Sans-Serif;
     margin: 0 0 0.5em 0;
@@ -31,10 +31,28 @@ font: black;
 background-color: greenyellow;
 text-decoration: underline;
 }
-ul li{
-    list-style: nono;
+al li a{
+    
+    color: green;
+    list-style-type: upper-roman;
+}
+al li a:hover{
+font: black;
+background-color: greenyellow;
+text-decoration: underline;
+}
+al li{
+    list-style: none;
     font-size: 22px;
     line-height: 1.2em;
     margin: 0 0 10px;
 }
-
+al li::before {
+    content: "\2022";
+    color: rgb(0, 136, 84);
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+    
+  }
