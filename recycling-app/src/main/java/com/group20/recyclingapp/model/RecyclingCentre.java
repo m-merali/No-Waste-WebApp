@@ -54,6 +54,10 @@ public class RecyclingCentre {
 		this.location = location;
 	}
 
+	public RecyclingCentre() {
+		
+	}
+
 	public Long getId() {
 		return id;
 	}
