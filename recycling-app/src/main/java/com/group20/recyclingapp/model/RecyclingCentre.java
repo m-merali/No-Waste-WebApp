@@ -55,7 +55,7 @@ public class RecyclingCentre {
 	}
 
 	public RecyclingCentre() {
-		
+
 	}
 
 	public Long getId() {
