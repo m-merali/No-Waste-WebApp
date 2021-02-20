@@ -1,13 +1,17 @@
 package com.group20.recyclingapp.controller;
 
+import com.group20.recyclingapp.model.Location;
 import com.group20.recyclingapp.model.RecyclingCentre;
 import com.group20.recyclingapp.processor.LocationDistance;
 import com.group20.recyclingapp.repository.LocationRepository;
 import com.group20.recyclingapp.repository.RecyclingCentreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -20,6 +24,32 @@ public class LocationController {
 
 
     //Still working on the PostMapping
+    @PostMapping("/api/search")
+    public List<LocationDistance> searchLocation(@RequestParam("latitude") Double latitude,@RequestParam("longitude") Double longitude) {
+        List<Location> locations = locationRepository.findAll();
+        List<LocationDistance> locationDistances = new ArrayList<>();
+
+        locations.forEach(location -> {
+           double distance = calcDistanceFromCoordinatesInKm(location.getLatitude(), location.getLongitude(), latitude, longitude);
+           RecyclingCentre recyclingCentre = recyclingCentreRepository.findAllByLocation(location);
+           LocationDistance locationDistance = new LocationDistance(location, recyclingCentre, distance);
+           locationDistances.add(locationDistance);
+        });
+
+        locationDistances.sort(new SortByDistance());
+
+        List<LocationDistance> nearestLocations = new ArrayList<>();
+        int amount = 0;
+        for (LocationDistance locationDistance : locationDistances) {
+            nearestLocations.add(locationDistance);
+            amount ++;
+            //can change number from 3 to any number if you want
+            if (amount >=3) {
+                break;
+            }
+        }
+        return nearestLocations;
+    }
 
 
     // basically the below methods are used to calculate the distance between users location and
@@ -46,5 +76,11 @@ public class LocationController {
    }
 
    // something to sort by distance
+    //Used for sorting in ascending order of roll number
+    class SortByDistance implements Comparator<LocationDistance> {
+        public int compare(LocationDistance a, LocationDistance b) {
+            return (int) (a.getDistance() - b.getDistance());
+        }
+   }
 
 }
