@@ -1,6 +1,8 @@
 package com.group20.recyclingapp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table
@@ -9,44 +11,53 @@ public class RecyclingCentre {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotEmpty
 	private String name;
+	@NotEmpty
 	private String localAuthority; // also called borough
+	@NotEmpty
 	private String email;
+	@NotNull
 	private Integer telephone;
+	@NotEmpty
+	private String url;
+	@NotEmpty
+	private String postcode;
+
 	
-//no argument constructor
-	public RecyclingCentre () {
-		
-	}
+//Entity relationships often depend on the existence of another entity — for example,
+// the Person–Address relationship. Without the Person, the Address entity doesn't have any meaning of its own.
+// When we delete the Person entity, our Address entity should also get deleted.
+//
+//Cascading is the way to achieve this. When we perform some action on the target entity,
+// the same action will be applied to the associated entity.
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private Location location;
+
 	
-//constructor with everything
-	public RecyclingCentre(
-			Long id, 
-			String name, 
-			String localAuthority, 
-			String email, 
-			Integer telephone) {
-		
-		
-		this.id = id;
+//constructor without id because it will be auto-generated		
+
+	public RecyclingCentre(@NotEmpty String name,
+						   @NotEmpty String localAuthority,
+						   @NotEmpty String email,
+						   @NotNull Integer telephone,
+						   @NotEmpty String url,
+						   @NotEmpty String postcode,
+						   Location location) {
 		this.name = name;
 		this.localAuthority = localAuthority;
 		this.email = email;
 		this.telephone = telephone;
+		this.url = url;
+		this.postcode = postcode;
+		this.location = location;
 	}
-	
-//constructor without id because it will be auto-generated		
-public RecyclingCentre(String name,
-		String localAuthority, 
-		String email, 
-		Integer telephone) {
-	this.name = name;
-	this.localAuthority = localAuthority;
-	this.email = email;
-	this.telephone = telephone;
-}
 
-//getters and setters
+	public RecyclingCentre() {
+
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -87,15 +98,27 @@ public RecyclingCentre(String name,
 		this.telephone = telephone;
 	}
 
+	public String getUrl() {
+		return url;
+	}
 
-	@Override
-	public String toString() {
-		return "RecyclingCentre{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", localAuthority='" + localAuthority + '\'' +
-				", email='" + email + '\'' +
-				", telephone=" + telephone +
-				'}';
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getPostcode() {
+		return postcode;
+	}
+
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 }

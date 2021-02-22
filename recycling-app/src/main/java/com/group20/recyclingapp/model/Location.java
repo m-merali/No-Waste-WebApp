@@ -1,6 +1,8 @@
 package com.group20.recyclingapp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table
@@ -9,20 +11,19 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) //AUTO or IDENTITY - figure out which one...
 	private Long id;
+    @NotNull
 	private Long latitude;
+    @NotNull
 	private Long longitude;
+    @NotEmpty
+    private String address;
 
-	@OneToOne
-    private RecyclingCentre recyclingCentre;
 
-    public Location() {
-    }
-
-    public Location(Long id, Long latitude, Long longitude, RecyclingCentre recyclingCentre) {
+    public Location(Long id, Long latitude, Long longitude, RecyclingCentre recyclingCentre, String address) {
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.recyclingCentre = recyclingCentre;
+        this.address = address;
     }
 
     public Long getId() {
@@ -49,11 +50,11 @@ public class Location {
         this.longitude = longitude;
     }
 
-    public RecyclingCentre getRecyclingCentre() {
-        return recyclingCentre;
+    public String getAddress() {
+        return address;
     }
 
-    public void setRecyclingCentre(RecyclingCentre recyclingCentre) {
-        this.recyclingCentre = recyclingCentre;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
