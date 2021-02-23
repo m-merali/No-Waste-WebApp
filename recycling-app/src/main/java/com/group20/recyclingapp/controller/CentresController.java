@@ -34,6 +34,7 @@ public class CentresController {
         return "recycling-centres";
     }
 
+    @GetMapping("centres/new")
     public String showAddRecyclingCentre (Model model) {
         RecyclingCentre recyclingCentre = new RecyclingCentre();
         Location location = new Location();
