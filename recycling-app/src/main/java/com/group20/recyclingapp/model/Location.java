@@ -26,6 +26,10 @@ public class Location {
         this.address = address;
     }
 
+    public Location() {
+
+    }
+
     public Long getId() {
         return id;
     }
