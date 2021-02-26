@@ -1,59 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
-  /* adds padding to the navbar and keeps them all within border*/
- * { 
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-} 
-  /* Whole background*/
-body {
-  font-family: "Quicksand", sans-serif;
-  background-color: #a6f5c3;
-  /*background-image: url(../images/making-a-case-for-climate-change-adaptation-scaled_2560x1648_acf_cropped-1.jpg);*/
-}
-
-a {
-  text-decoration: none;
-}
-
-p {
-  margin: 10px 0;
-}
-
-img {
-  width: 100%;
-}
-
-/* Navbar */
-.navbar {
-  background-color: #050505;
-  color: #fff;
-  height: 80px;
-}
-
-.navbar ul {
-  display: flex;
-}
-
-.navbar a {
-  color: #ffffff;
-  padding: 10px;
-  margin: 0 5px;
-}
-
-.navbar a:hover {
-  color: #01a66c;
-  /*border-bottom: 2px #ffffff solid;*/
-} 
-
-.navbar .flex {
-  justify-content: space-between;
-}
-
-
 /* Recycle title*/
 .Recycle {
+  height: 400px;
   background-image: url(../images/recyclable_banner.jpg);
   background-size: cover;
   background-position: top;
@@ -101,7 +48,6 @@ img {
   font-size: 40px;
 }
 .explore p{
-  
   text-align: center;
   font-size: 25px;
 }
@@ -151,30 +97,6 @@ img {
   border-radius: 50%;
 }
   
-/* Footer */
-.footer {
-  color: white;
-  background-color: #35363a;
-}
-
-.footer a {
-  color: white;
-  text-decoration: none;
-}
-
-.footer .social a {
-  margin: 0 10px;
-}
-
-.grid1{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
 /* Tablets and under */
 @media (max-width: 768px) {
   .grid,
