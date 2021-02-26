@@ -1,68 +1,7 @@
-  /* adds padding to the navbar and keeps them all within border*/
- * { 
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-} 
-  /* Whole background*/
-body {
-  font-family: "Lato", sans-serif;
-  background-color: #ffffff;
-  /*background-image: url(../images/making-a-case-for-climate-change-adaptation-scaled_2560x1648_acf_cropped-1.jpg);*/
-}
-
-a {
-  text-decoration: none;
-}
-
-p {
-  margin: 10px 0;
-}
-
-img {
-  width: 100%;
-}
-
-
-/*Navbar positioning*/
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-/* Navbar */
-.navbar {
-  background-color: #050505;
-  color: #fff;
-  height: 70px;
-}
-
-.navbar ul {
-  display: flex;
-}
-
-.navbar a {
-  color: #ffffff;
-  padding: 10px;
-  margin: 0 5px;
-}
-
-.navbar a:hover {
-  color: #01a66c;
-  /*border-bottom: 2px #ffffff solid;*/
-} 
-
-.navbar .flex {
-  justify-content: space-between;
-}
-
-
 /* Recycle title*/
 .Recycle {
-  background-image: url(../images/1156725.jpg);
+  height: 400px;
+  background-image: url(../images/recyclable_banner.jpg);
   background-size: cover;
   background-position: top;
   text-align: center;
@@ -77,43 +16,40 @@ img {
   
 }
 
-/*Slant*/
+/* Slant design */
 .Recycle::before,
-.Recycle::after{
-  content:'';
-  position:absolute;
-  height:  50px;
-  bottom: -30px;
+.Recycle::after {
+  content: "";
+  position: absolute;
+  height: 100px;
+  bottom: -70px;
   right: 0;
   left: 0;
-  background: #01a66c;
+  background: #01a66c; 
   transform: skewY(-3deg);
-  -webkit-transform: skewY(-1deg);
+  -webkit-transform: skewY(-1.8deg);
   -moz-transform: skewY(-3deg);
   -ms-transform: skewY(-3deg);
-  box-shadow: 0px -10px 10px rgba(0,0,0,0.4);
 }
 
 /* What would you like to explore?*/
 .explore{
-  padding: 20px;
+  height: 500px;
   background-color: #01a66c;
-  box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
+  color: white;
 }
+
 .explore .grid{
   text-align: center;
 }
-.explore-text {
+
+.today h1 {
   text-align: center;
-  font-size: large;
-  color: white;
-}
-.explore h1{
-  font-size: 35px;
-  margin: 15px;
+  font-size: 40px;
 }
 .explore p{
   text-align: center;
+  font-size: 25px;
 }
 .explore .grid{
   display: inside;
@@ -154,33 +90,13 @@ input area
   flex: 50px;
   padding: 20px;
 } 
+
+img {
+  height: 500px;
+  width: 500px;
+  border-radius: 50%;
+}
   
-/* Footer */
-.footer {
-  color: white;
-  background-color: #35363a;
-  padding: 20px;
-  box-shadow: 0px -10px 10px rgba(0,0,0,0.4);
-}
-
-.footer a {
-  color: white;
-  text-decoration: none;
-}
-
-.footer .social a {
-  margin: 0 10px;
-}
-
-.grid1{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
 /* Tablets and under */
 @media (max-width: 768px) {
   .grid,
