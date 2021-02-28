@@ -38,7 +38,7 @@
 }
 
 .Collection-info-title{
-  height: 150px;
+  height: 160px;
   background-image: url(../images/bin.jpg);
   background-size: cover;
   background-position: top;
@@ -48,7 +48,7 @@
   text-shadow: 0px 3px 20px black;
   color: rgb(255, 255, 255);
   font-size: 30px;
-  padding-top:40px;
+  padding-top:50px;
   margin-top: -20px;
   position: relative;
 }
