@@ -33,7 +33,7 @@
 }
 
 /* What would you like to do today */
-.collection-dates {
+.location-section {
   height: 200px;
   position: relative;
   text-align: center;
@@ -41,21 +41,21 @@
   padding-bottom: 40px;
 }
 
-.collection-dates h1 {
+.location-section h1 {
   font-size: 40px;
 }
 
-.collection-dates p {
+.location-section p {
   margin: 20px 0;
   font-size: 20px;
 }
 
-.collection-dates h3 {
+.location-section h3 {
   margin: 20px 0;
   font-size: 20px;
 }
 
-.collection-dates .grid {
+.location-section .grid {
   overflow: visible;
   grid-template-columns: 55% auto;
   gap: 30px;

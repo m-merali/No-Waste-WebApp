@@ -6,9 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
   <link rel="stylesheet" href="../Locations_page/locations.css" />
   <link rel="stylesheet" href="../css/utilities.css" />
   <title>Recycling Locations</title>
@@ -17,7 +16,7 @@
     /* Set the size of the div element that contains the map */
     #map {
       height: 500px;
-      /* The height is 400 pixels */
+      /* The height is 500 pixels */
       width: 100%;
       /* The width is the width of the web page */
     }
@@ -30,7 +29,7 @@
         lat: 51.5074,
         lng: -0.1278
       };
-      // The map, centered at Uluru
+      // The map, centered at London
       const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 12,
         center: london,
@@ -60,16 +59,16 @@
     </div>
   </div>
 
-  <!--TITLE-->>
+  <!-- Recycling locations title -->>
   <section class="Locations">
     <div class="Locations-text"></div>
     <h1>RECYCLING LOCATIONS</h1>
   </section>
 
-  <!-- Locations Section -->
-  <section class="collection-dates">
+  <!-- Locations section -->
+  <section class="location-section">
     <div class="container grid">
-      <div class="collection-dates-text">
+      <div class="location-section-text">
         <h3>
           Please enter your postcode below to find your nearest recycling centre
         </h3>
@@ -103,7 +102,7 @@
           <li><a href="../index.html">Home</a></li>
           <li><a href="../Recyclable_page/recyclable.html">Recyclable Items</a></li>
           <li><a href="locations.html">Recycling Locations</a></li>
-          <li><a href="dates.html">Collection Dates</a></li>
+          <li><a href="../Collections_page/collection.html">Collection Dates</a></li>
         </ul>
       </nav>
       <div class="social">
