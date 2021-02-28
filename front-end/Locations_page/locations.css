@@ -16,9 +16,9 @@
 
 }
 
-/* What would you like to do today */
+/* Find recycling centre */
 .location-section {
-  height: 200px;
+  height: 300px;
   position: relative;
   text-align: center;
   padding-bottom: 40px;
@@ -29,11 +29,6 @@
 }
 
 .location-section p {
-  margin: 20px 0;
-  font-size: 20px;
-}
-
-.location-section h3 {
   margin: 20px 0;
   font-size: 20px;
 }
