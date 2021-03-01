@@ -1,5 +1,5 @@
-/* Recycle title*/
-.Recycle {
+/* Collection title*/
+.Collection {
   height: 400px;
   background-image: url(../images/calendar-banner.jpg);
   background-size: cover;
@@ -7,38 +7,19 @@
   text-align: center;
   text-decoration: 10px underline;
   text-decoration-color: #01a66c;
-  text-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+  text-shadow: 0px 3px 20px black;
   color: rgb(255, 255, 255);
-  font-size: 35px;
-  padding: 150px;
+  font-size: 40px;
+  padding: 170px;
   margin-top: -20px;
   position: relative;
 
 }
-
-/* Slant design */
-.Recycle::before,
-.Recycle::after {
-  content: "";
-  position: absolute;
-  height: 100px;
-  bottom: -70px;
-  right: 0;
-  left: 0;
-  background: #01a66c;
-  transform: skewY(-3deg);
-  -webkit-transform: skewY(-1.8deg);
-  -moz-transform: skewY(-3deg);
-  -ms-transform: skewY(-3deg);
-}
-
-
-/* What would you like to do today */
+/* Check when your recycling is collected */
 .collection-dates {
-  height: 500px;
+  height: 300px;
   position: relative;
   text-align: center;
-  background: #01a66c;
 }
 
 .collection-dates h1 {
@@ -56,7 +37,38 @@
   gap: 30px;
 }
 
+.Collection-info-title{
+  height: 160px;
+  background-image: url(../images/bin.jpg);
+  background-size: cover;
+  background-position: top;
+  text-align: center;
+  text-decoration: 10px underline;
+  text-decoration-color: #01a66c;
+  text-shadow: 0px 3px 20px black;
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  padding-top:50px;
+  margin-top: -20px;
+  position: relative;
+}
 
+.collection-info-main .card > i {
+  margin-right: 20px;
+}
+
+.collection-info-main .grid {
+  padding: 30px;
+}
+
+.card {
+  background-color: #fff;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 10px;
+}
 
 input {
   position: relative;
@@ -74,6 +86,7 @@ input[type="text"] {
   outline: none;
   padding: 0 25px;
   border-radius: 25px 0 0 25px;
+  border: 2px solid black;
 }
 
 input[type="submit"] {
@@ -85,4 +98,6 @@ input[type="submit"] {
   outline: none;
   cursor: pointer;
   background: #ffc107;
+  border: 2px solid black;
 }
+
