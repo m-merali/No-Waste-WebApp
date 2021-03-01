@@ -30,7 +30,7 @@
                 lng: -0.1278
             };
             // The map, centered at London
-            const map = new google.maps.Map(document.getElementById("map"), {
+            var map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 12,
                 center: london,
             });
@@ -49,6 +49,16 @@
                 var place = places.getPlace();
                 var latitude = place.geometry.location.lat();
                 var longitude = place.geometry.location.lng();
+
+                var userLocation = {
+                    lat: latitude,
+                    lng: longitude
+                };
+
+                map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 12,
+                    center: userLocation,
+                });
 
                 var marker1 = {
                     coords: {lat: latitude, lng: longitude},
@@ -75,8 +85,8 @@
                                 coords: {lat: locationDis.location.latitude, lng: locationDis.location.longitude},
                                 iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
                                 content: '<div>' +
-                                    '<h5>Recycling Center: ' + locationDis.recyclingCenter.name + '</h5>' +
-                                    '<h5>Postal code: ' + locationDis.recyclingCenter.postalCode + '</h5>' +
+                                    '<h5>Recycling Centre: ' + locationDis.recyclingCentre.name + '</h5>' +
+                                    '<h5>Postcode: ' + locationDis.recyclingCentre.postcode + '</h5>' +
                                     '<h5> Distance: ' + parseFloat(locationDis.distance).toFixed(1) + ' km away</h5>' +
                                     '</div>>'
                             }
