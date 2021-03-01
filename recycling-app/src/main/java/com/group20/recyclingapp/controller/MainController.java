@@ -53,7 +53,7 @@ public class MainController {
     }
 
     @GetMapping("/centres/new")
-    public String showRecyclingCentre(Model model) {
+    public String showAddRecyclingCentre(Model model) {
         RecyclingCentre recyclingCentre = new RecyclingCentre();
         Location location = new Location();
         recyclingCentre.setLocation(location);
