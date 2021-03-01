@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragment/main_layout}"
+>
+<head>
+    <title>Recycling Centers</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Recycling Centres</h1>
+    <div class="table-responsive row">
+        <p><a th:href="@{/centres/new}" class="btn btn-sm btn-primary">Add New</a></p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Local Authority</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telephone</th>
+                <th scope="col">Postal Code</th>
+                <td>
+                    Action
+                </td>
+            </tr>
+            </thead>
+            <body>
+            <tr th:each="centre : ${recyclingCentres}">
+                <td th:text="${centre.name}"></td>
+                <td th:text="${centre.localAuthority}"></td>
+                <td th:text="${centre.email}"></td>
+                <td th:text="${centre.telephone}"></td>
+                <td th:text="${centre.postcode}"></td>
+                <td class="d-flex justify-content-between">
+                    <a th:href="@{${centre.url}}" target="_blank" class="btn btn-secondary btn-sm">Visit</a>
+                    <a th:href="@{/centres/delete/{id}(id=${centre.id})}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            </body>
+        </table>
+    </div>
+</div>
+</body>
+
+</html>
