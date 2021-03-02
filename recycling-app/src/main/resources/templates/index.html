@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragment/main_layout}"
->
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+        integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/utilities.css}">
+
     <title>No Waste</title>
 </head>
-<body>
 
-<div layout:fragment="content">
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="container flex">
+            <a th:href="@{/}" class="logo">
+                <h1>No Waste.</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/recyclable}">Recyclable Items</a></li>
+                    <li><a th:href="@{/locations}">Recycling Locations</a></li>
+                    <li><a th:href="@{/centres}">Recycling Centres</a></li>
+                    <li><a th:href="@{/dates}">Collection Dates</a></li>
+                </ul>
+            </nav>
+            <label id="dark-mode"></label>
+        </div>
+    </div>
+
     <!-- Our mission -->
     <section class="mission">
         <div class="container grid">
@@ -22,7 +44,8 @@
                     pollution.
                 </p>
                 <p>
-                    As recycling saves energy it also reduces greenhouse gas emissions, which helps to tackle climate
+                    As recycling saves energy it also reduces greenhouse gas emissions, which helps to tackle
+                    climate
                     change. You can find a range of tools, which includes searching for recyclable items, local
                     recycling
                     locations and also your collection dates.
@@ -30,7 +53,7 @@
             </div>
 
             <div>
-                <img src="images/leaf.svg" alt="leaf image" class="leaf">
+                <img th:src="@{/images/leaf.svg}" alt="leaf image" class="leaf">
             </div>
         </div>
     </section>
@@ -75,7 +98,34 @@
             </div>
         </div>
     </section>
-</div>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container grid grid-3">
+            <div>
+                <h1>Group 20</h1>
+                <p>Copyright &copy; 2021</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/recyclable}">Recyclable Items</a></li>
+                    <li><a th:href="@{/locations}">Recycling Locations</a></li>
+                    <li><a th:href="@{/centres}">Recycling Centers</a></li>
+                    <li><a th:href="@{/dates}">Collection Dates</a></li>
+                </ul>
+            </nav>
+            <div class="social">
+                <a href="https://www.facebook.com/"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="https://www.instagram.com/"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="https://www.twitter.com"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script th:src="@{/js/script.js}"></script>
 
 </body>
+
 </html>
