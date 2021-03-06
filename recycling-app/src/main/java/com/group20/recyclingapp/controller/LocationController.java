@@ -3,17 +3,22 @@ package com.group20.recyclingapp.controller;
 import com.group20.recyclingapp.model.Location;
 import com.group20.recyclingapp.model.RecyclingCentre;
 import com.group20.recyclingapp.processor.LocationDistance;
+import com.group20.recyclingapp.processor.NearestBoroughRequest;
 import com.group20.recyclingapp.repository.LocationRepository;
 import com.group20.recyclingapp.repository.RecyclingCentreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class LocationController {
 
@@ -21,6 +26,47 @@ public class LocationController {
     LocationRepository locationRepository;
     @Autowired
     RecyclingCentreRepository recyclingCentreRepository;
+
+    @PostMapping("/api/centres")
+    public List<RecyclingCentre> showRecyclingCentres()
+    {
+        return recyclingCentreRepository.findAll();
+    }
+
+    @PostMapping("/api/centres/delete")
+    public List<RecyclingCentre> deleteRecyclingCentre(@RequestParam("id") Long id)
+    {
+        Optional<RecyclingCentre> recyclingCentre = recyclingCentreRepository.findById(id);
+        recyclingCentre.ifPresent(centre -> recyclingCentreRepository.delete(centre));
+        return showRecyclingCentres();
+    }
+
+    @PostMapping("/api/centres/new")
+    public String addRecyclingCentre(@Valid @RequestBody RecyclingCentre centre, BindingResult bindingResult){
+        if ( centre.getLocation().getAddress().isEmpty() || centre.getLocation().getAddress() == null){
+            bindingResult.addError(new FieldError("centre", "location", "Location's latitude, longitude and address are required"));
+        }
+        if (bindingResult.hasErrors()){
+            return "error";
+        }
+
+        Location savedLocation = locationRepository.save(centre.getLocation());
+        centre.setLocation(savedLocation);
+
+        RecyclingCentre savedRecyclingCentre1 = recyclingCentreRepository.save(centre);
+        return "saved";
+    }
+
+    @PostMapping("/api/centres/nearBy")
+    public LocationDistance getNearestRecyclingCentre(@RequestBody NearestBoroughRequest nearestBoroughRequest){
+        List<LocationDistance> locationDistances = new ArrayList<>();
+        nearestBoroughRequest.getCentres().forEach(centre -> {
+            double distance = calcDistanceFromCoordinatesInKm(centre.getLocation().getLatitude(), centre.getLocation().getLongitude(), nearestBoroughRequest.getLatitude(), nearestBoroughRequest.getLongitude());
+            LocationDistance locationDistance = new LocationDistance(centre.getLocation(), centre, distance);
+            locationDistances.add(locationDistance);
+        });
+        return locationDistances.get(0);
+    }
 
 
     //Still working on the PostMapping
