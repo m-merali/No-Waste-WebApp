@@ -38,6 +38,7 @@
                 <td th:text="${centre.postcode}"></td>
                 <td class="d-flex justify-content-between">
                     <a th:href="@{${centre.url}}" target="_blank" class="btn btn-secondary btn-sm">Visit</a>
+                    <a th:href="@{/centres/edit/{id}(id=${centre.id})}" class="btn btn-primary btn-sm">Edit</a>
                     <a th:href="@{/centres/delete/{id}(id=${centre.id})}" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>

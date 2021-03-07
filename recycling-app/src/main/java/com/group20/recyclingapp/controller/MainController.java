@@ -61,6 +61,16 @@ public class MainController {
         return "add-recycling-centre";
     }
 
+    @GetMapping("/centres/edit/{id}")
+    public String showEditRecyclingCentre(@PathVariable("id") long id, Model model) {
+        Optional<RecyclingCentre> recyclingCentre = recyclingCentreRepository.findById(id);
+        if (recyclingCentre.isEmpty()){
+            return "recycling-centres";
+        }
+        model.addAttribute("centre", recyclingCentre.get());
+        return "edit-recycling-centre";
+    }
+
     @PostMapping("/centres/new")
     public String addRecyclingCentre(@Valid @ModelAttribute("centre") RecyclingCentre centre, BindingResult bindingResult) {
         if (centre.getLocation().getAddress().isEmpty() || centre.getLocation().getAddress() == null) {
@@ -68,6 +78,21 @@ public class MainController {
         }
         if (bindingResult.hasErrors()) {
             return "add-recycling-centre";
+        }
+        Location savedLocation = locationRepository.save(centre.getLocation());
+        centre.setLocation(savedLocation);
+
+        RecyclingCentre savedRecyclingCentre1 = recyclingCentreRepository.save(centre);
+        return "redirect:/centres";
+    }
+
+    @PostMapping("/centres/update")
+    public String updateRecyclingCentre(@Valid @ModelAttribute("centre") RecyclingCentre centre, BindingResult bindingResult) {
+        if (centre.getLocation().getAddress().isEmpty() || centre.getLocation().getAddress() == null) {
+            bindingResult.addError(new FieldError("centre" , "location", "Location's latitude, longitude and address are required!"));
+        }
+        if (bindingResult.hasErrors()) {
+            return "edit-recycling-centre";
         }
         Location savedLocation = locationRepository.save(centre.getLocation());
         centre.setLocation(savedLocation);
