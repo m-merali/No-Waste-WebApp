@@ -12,6 +12,11 @@ body {
   background-color: #01a66c;
 }
 
+body.night {
+  background-color: #292c35;
+  color: #fff;
+}
+
 a {
   text-decoration: none;
 }
@@ -23,6 +28,35 @@ p {
 img {
   width: 100%;
 }
+
+/* Dark mode */
+label{
+  position: absolute;
+  width: 45px;
+  height: 22px;
+  right: 20px;
+  top: 20px;
+  border: 2px solid;
+  border-radius: 20px;
+}
+label:before{
+  position: absolute;
+  content: '';
+  width:17px;
+  height: 17px;
+  left: 1px;
+  top: 1px;
+  border-radius: 50%;
+  background: #01a66c;
+  cursor: pointer;
+  transition: 0.4s;
+}
+label.active:before{
+  left: 24px;
+  background: #fff;
+}
+
+
 
 /* Navbar */
 .navbar {

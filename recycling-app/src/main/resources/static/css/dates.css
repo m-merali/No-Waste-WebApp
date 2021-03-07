@@ -16,29 +16,11 @@
 
 }
 
-/* Slant design */
-.Recycle::before,
-.Recycle::after {
-  content: "";
-  position: absolute;
-  height: 100px;
-  bottom: -70px;
-  right: 0;
-  left: 0;
-  background: #01a66c;
-  transform: skewY(-3deg);
-  -webkit-transform: skewY(-1.8deg);
-  -moz-transform: skewY(-3deg);
-  -ms-transform: skewY(-3deg);
-}
-
-
 /* What would you like to do today */
 .collection-dates {
   height: 500px;
   position: relative;
   text-align: center;
-  background: #01a66c;
 }
 
 .collection-dates h1 {
@@ -86,3 +68,4 @@ input[type="submit"] {
   cursor: pointer;
   background: #ffc107;
 }
+

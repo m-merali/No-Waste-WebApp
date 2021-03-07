@@ -14,16 +14,6 @@
           crossorigin="anonymous" />
     <link rel="stylesheet" th:href="@{/css/locations.css}"/>
 
-    <style type="text/css">
-        /* Set the size of the div element that contains the map */
-        #map {
-            height: 400px;
-            /* The height is 400 pixels */
-            width: 100%;
-            /* The width is the width of the web page */
-        }
-    </style>
-
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script th:src="@{'https://maps.googleapis.com/maps/api/js?key=' + ${@environment.getProperty('google.maps.api.key')} + '&callback=initMap&libraries=places&v=weekly'}"
             async></script>
@@ -152,6 +142,15 @@
         }
     </script>
 
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+    </script>
+
 </head>
 
 <body>
@@ -180,6 +179,18 @@
     <!--The div element for the map -->
     <div id="map"></div>
 </div>
+
+<th:block layout:fragment="javascript">
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+    </script>
+
+</th:block>
 
 </body>
 
