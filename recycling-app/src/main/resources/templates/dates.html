@@ -21,7 +21,7 @@
     <section class="collection-dates">
         <div class="container grid">
             <div class="collection-dates-text">
-                <h1>Check When Your Recycling Is Collected:</h1>
+                <h1>Check When Your Recycling Is Collected</h1>
                 <p>
                     Please enter your valid postcode below
                 </p>
@@ -223,8 +223,8 @@
                     let divElement = "<div class='collection_dates_result'><small>Your postcode didn't match any location in google maps. You might not get the borough that is nearest to you</small>";
                     divElement += "<ul>"
                     divElement += "<ul>";
-                    divElement += "<li>Borough: " + recyclingCentresInUsersArea[0].localAuthority+ "</li>";
-                    divElement += "<li>Collection day: " + recyclingCentresInUsersArea[0].collectionDay + "</li>";
+                    divElement += "<li><strong>Borough:</strong> " + recyclingCentresInUsersArea[0].localAuthority+ "</li>";
+                    divElement += "<li><strong>Collection Day:</strong> " + recyclingCentresInUsersArea[0].collectionDay + "</li>";
                     divElement += "</ul></div>"
                     $("#results").html(divElement);
                     return;
@@ -255,8 +255,8 @@
                         }else{
                             let divElement = "<div class='collection_dates_result'>";
                             divElement += "<ul>"
-                            divElement += "<li>Borough: " + nearbyBorough.recyclingCentre.localAuthority+ "</li>";
-                            divElement += "<li>Collection day: " + nearbyBorough.recyclingCentre.collectionDay + "</li>";
+                            divElement += "<li><strong>Borough:</strong> " + nearbyBorough.recyclingCentre.localAuthority+ "</li>";
+                            divElement += "<li><strong>Collection Day:</strong> " + nearbyBorough.recyclingCentre.collectionDay + "</li>";
                             divElement += "</ul></div>"
                             $("#results").html(divElement);
                         }
