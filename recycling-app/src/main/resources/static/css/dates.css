@@ -1,5 +1,5 @@
-/* Recycle title*/
-.Recycle {
+/* Collection title*/
+.Collection {
   height: 400px;
   background-image: url(../images/calendar-banner.jpg);
   background-size: cover;
@@ -11,12 +11,11 @@
   color: rgb(255, 255, 255);
   font-size: 40px;
   padding: 160px;
-  margin-top: -20px;
   position: relative;
 
 }
 
-/* What would you like to do today */
+/* Collection dates section */
 .collection-dates {
   height: 500px;
   position: relative;
@@ -37,8 +36,6 @@
   grid-template-columns: 55% auto;
   gap: 30px;
 }
-
-
 
 input {
   position: relative;

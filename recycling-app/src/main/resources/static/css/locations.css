@@ -11,9 +11,7 @@
   color: rgb(255, 255, 255);
   font-size: 40px;
   padding: 160px;
-  margin-top: -20px;
   position: relative;
-
 }
 
 /* Set the size of the div element that contains the map */
@@ -24,29 +22,29 @@
   /* The width is the width of the web page */
 }
 
-/* What would you like to do today */
-.collection-dates {
+/* Find nearest recycling centre */
+.recycling-locations {
   height: 200px;
   position: relative;
   text-align: center;
   padding-bottom: 40px;
 }
 
-.collection-dates h1 {
+.recycling-locations h1 {
   font-size: 40px;
 }
 
-.collection-dates p {
+.recycling-locations p {
   margin: 20px 0;
   font-size: 20px;
 }
 
-.collection-dates h3 {
+.recycling-locations h3 {
   margin: 20px 0;
   font-size: 20px;
 }
 
-.collection-dates .grid {
+.recycling-locations .grid {
   overflow: visible;
   grid-template-columns: 55% auto;
   gap: 30px;
