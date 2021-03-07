@@ -69,3 +69,36 @@ input[type="submit"] {
   background: #ffc107;
 }
 
+.Collection-info-title{
+  height: 160px;
+  background-image: url(../images/bin.jpg);
+  background-size: cover;
+  background-position: top;
+  text-align: center;
+  text-decoration: 10px underline;
+  text-decoration-color: #01a66c;
+  text-shadow: 0px 3px 20px black;
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  padding-top:50px;
+  margin-top: -20px;
+  position: relative;
+}
+
+.collection-info-main .card > i {
+  margin-right: 20px;
+}
+
+.collection-info-main .grid {
+  padding: 30px;
+}
+
+.card {
+  background-color: #fff;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 10px;
+}
+
