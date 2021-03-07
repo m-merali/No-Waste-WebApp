@@ -40,12 +40,19 @@
 
 <th:block layout:fragment="javascript">
     <script th:inline="javascript" type="text/javascript">
+        //set the api key (
         var apiKey = /*[[${@environment.getProperty('google.maps.api.key')}]]*/ 'default';
 
+        //initialize the boroughs (recyclingCentre model)
         let boroughs = [];
+
+        //initialize all localAuthorities in London
+        let localAuthoritiesInLondon = [];
+
         let postCodeAddressComp = [];
         let postCodelocation;
 
+        //fetch the recycling centres from the database
         fetch("http://localhost:8080/api/centres", {
             method: 'post',
             headers: {
@@ -54,33 +61,74 @@
         })
             .then(response => response.json())
             .then(function (myBoroughs) {
-                myBoroughs.map(borough => {
-                    let urlLatLng = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ borough.location.latitude +"%2C"+ borough.location.longitude+"&result_type=locality&key="+ apiKey;
-
-                    fetch(urlLatLng, {
-                        method: 'get',
-                        headers: {
-                            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-                        }
-                    }).then(response => response.json()).
-                    then(data => {
-                        if (data.status === "OK")
-                            borough.address_components =  data.results[0].address_components;
-                    }).catch(function (error) {
-                        console.log('Request failed', error);
-                    });
-                })
+                //set the boroughs to the boroughs fetched from the database
                 boroughs = myBoroughs;
             })
             .catch(function (error) {
                 console.log('Request failed', error);
             });
 
+        //fetch all the local authorities and postcodes in Inner London using opendata API
+        fetch("https://opendata.camden.gov.uk/resource/g3bz-7ur8.json?county_name=Inner%20London", {
+            method: 'get',
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            }
+        })
+            .then(response => response.json())
+            .then(function (localAuthoritiesInInnerLondon) {
+                //append the localAuthorities in Inner london to all the authorities in London
+                Array.prototype.push.apply(localAuthoritiesInLondon, localAuthoritiesInInnerLondon)
 
+            })
+            .catch(function (error) {
+                console.log('Request failed', error);
+            });
+
+        //fetch all the local authorities and postcodes in Outer London using opendata API
+        fetch("https://opendata.camden.gov.uk/resource/g3bz-7ur8.json?county_name=Outer%20London", {
+            method: 'get',
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            }
+        })
+            .then(response => response.json())
+            .then(function (localAuthoritiesInOuterLondon) {
+                //append the localAuthorities in Outer london to all the authorities in London
+                Array.prototype.push.apply(localAuthoritiesInLondon, localAuthoritiesInOuterLondon)
+            })
+            .catch(function (error) {
+                console.log('Request failed', error);
+            });
+
+        //event when the search postcode form is submitted
         $("#search-form").submit((e)=>{
             e.preventDefault();
-            let postcode = $("#search").val();
-            let urlPostcode = "https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:"+ postcode +"|country:UK&key="+ apiKey;
+            let userPostcode = $("#search").val().trim().split(" ")[0];
+
+
+
+            //show the user that we are fetching their localAuthority
+            $("#results").text("Fetching your local authority...");
+
+            //local authority in which the post code belongs
+            let userLocalAuthority;
+
+            //find local authority in london whose postcode_1 is equal to user's postcode
+            //userLocalAuthority = localAuthoritiesInLondon.find(localAuthority => localAuthority.postcode_1.split(" ")[0] === userPostcode);
+            localAuthoritiesInLondon.map( localAuthority => {
+                if (localAuthority.postcode_1.split(" ")[0] === userPostcode || localAuthority.postcode_2.split(" ")[0] === userPostcode || localAuthority.postcode_3.split(" ")[0] === userPostcode){
+                    userLocalAuthority = localAuthority;
+                }
+            } )
+
+
+
+            //initialize user's postcode location
+            let userPostCodeLocation;
+
+            //get user's postcode location coordinates via google map API
+            let urlPostcode = "https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:"+ userPostcode +"|country:UK&key="+ apiKey;
             $.ajax({
                 method: "get",
                 url : urlPostcode,
@@ -90,126 +138,103 @@
                     switch (data.status) {
                         case "OK":
                             $("#results").text("");
-                            getByLatLng(data);
+                            //set user's postcode location
+                            userPostCodeLocation = data.results[0].geometry.location;
                             break;
                         case "ZERO_RESULTS":
-                            $("#results").text("No results found for this postcode");
-                            return;
+                            $("#results").text("Your postcode didn't match any location in google maps");
+                            break;
                         default:
                             console.log("error");
-                            return;
+                            break;
                     }
+                    getCollectionDates();
                 }
             });
 
-            function getByLatLng(postalCodeData) {
-                let postalCodeCood = postalCodeData.results[0].geometry;
-                let urlLatLng = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ postalCodeCood.location.lat +"%2C"+ postalCodeCood.location.lng+"&result_type=locality&key="+ apiKey;
+            function getCollectionDates() {
+                //get recycling centres (named as boroughs here) stored in the database whose localAuthority is equal to the user's localAuthority
+                //initialize recycling centres in users area as empty array
+                let recyclingCentresInUsersArea = [];
 
-                fetch(urlLatLng, {
-                    method: 'get',
-                    headers: {
-                        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                //check if there are recycling centres in the database
+                if (boroughs.length <= 0 ){
+                    $("#results").text("There are no recycling centres stored in the database");
+                    return;
+                }
+
+                if (userLocalAuthority === undefined){
+                    $("#results").text("Your postcode didn't match any borough in Inner or Outer London. Please try another postcode.");
+                    return;
+                }else{
+                    $("#results").text("");
+                }
+
+                //loop through all the boroughs(recycling centres) stored in database
+                boroughs.map(borough => {
+                    //check if this recycling centre's localAuthority matches userLocalAuthority's local_authority_name
+                    if (borough.localAuthority === userLocalAuthority.local_authority_name){
+                        //add this recycling centre to the array recyclingCentresInUsersArea
+                        recyclingCentresInUsersArea.push(borough);
                     }
                 })
-                    .then(response => response.json())
-                    .then(function (data) {
 
-                        switch (data.status) {
-                            case "OK":
-                                postCodeAddressComp = data.results[0].address_components;
-                                postCodelocation = data.results[0].geometry.location;
-                                break;
-                            case "ZERO_RESULTS":
-                                postCodeAddressComp = postalCodeData.results[0].address_components;
-                                postCodelocation = postalCodeData.results[0].geometry.location;
-                                break;
-                            default:
-                                console.log("error");
-                                return;
+                //check if there are recycling centres in database that match user's recycling centre
+                if (recyclingCentresInUsersArea.length <= 0){
+                    $("#results").text("There are no recycling centres or boroughs that match you local authority");
+                    return;
+                }
+
+                //if user's postcode was did not have results in google maps, return any recycling centre that matches their local authority
+                if (userPostCodeLocation === undefined){
+                    let divElement = "<div class='collection_dates_result'><small>Your postcode didn't match any location in google maps. You might not get the borough that is nearest to you</small>";
+                    divElement += "<ul>"
+                    divElement += "<ul>";
+                    divElement += "<li>Borough: " + recyclingCentresInUsersArea[0].localAuthority+ "</li>";
+                    divElement += "<li>Collection day: " + recyclingCentresInUsersArea[0].collectionDay + "</li>";
+                    divElement += "</ul></div>"
+                    $("#results").html(divElement);
+                    return;
+                }
+
+                //since we now have recycling centres in users area, let's send them to the server where they will be compared to the user's postcode location and it will return the nearest recycling centre to the user
+                let requestData = {
+                    centres: recyclingCentresInUsersArea,
+                    latitude:userPostCodeLocation.lat,
+                    longitude: userPostCodeLocation.lng
+                };
+
+                let nearbyBorough;
+                $.ajax({
+                    url: "http://localhost:8080/api/centres/nearBy",
+                    method: "POST",
+                    contentType: "application/json",
+                    dataType: "text",
+                    data: JSON.stringify(requestData),
+                    success: response => {
+                        try {
+                            nearbyBorough = JSON.parse(response);
+                        }catch (e) {
+                            console.log(e)
                         }
-                        getCollectionDates()
-                    })
-                    .catch(function (error) {
-                        console.log('Request failed', error);
-                    });
+                        if (nearbyBorough === undefined){
+                            $("#results").text("Your postcode did not match any borough saved in our database");
+                        }else{
+                            let divElement = "<div class='collection_dates_result'>";
+                            divElement += "<ul>"
+                            divElement += "<li>Borough: " + nearbyBorough.recyclingCentre.localAuthority+ "</li>";
+                            divElement += "<li>Collection day: " + nearbyBorough.recyclingCentre.collectionDay + "</li>";
+                            divElement += "</ul></div>"
+                            $("#results").html(divElement);
+                        }
+                    },
+                    error: response => {
+                        console.log(response);
+                    },
+                });
             }
+
         })
-
-        function getCollectionDates() {
-            let postcodeLocalityLongName;
-            let nearbyBoroughs = [];
-
-            postCodeAddressComp.map(addressComp => {
-                if (addressComp.types.includes("locality")){
-                    postcodeLocalityLongName = addressComp.long_name;
-                }
-            })
-
-            if (postcodeLocalityLongName === undefined){
-                postCodeAddressComp.map(addressComp => {
-                    if (addressComp.types.includes("postal_town")){
-                        postcodeLocalityLongName = addressComp.long_name;
-                    }
-                })
-            }
-
-            if (postcodeLocalityLongName === undefined){
-                postCodeAddressComp.map(addressComp => {
-                    if (addressComp.types.includes("administrative_area_level_2")){
-                        postcodeLocalityLongName = addressComp.long_name;
-                    }
-                })
-            }
-
-            if (postcodeLocalityLongName === undefined){
-                $("#results").text("Please use another postcode");
-            }
-
-            boroughs.map(borough => {
-                if (borough.address_components !== undefined){
-                    borough.address_components.map(boroughAddressComp => {
-                        if (boroughAddressComp.long_name === postcodeLocalityLongName){
-                            nearbyBoroughs.push(borough);
-                            return true;
-                        }
-                    })
-                }
-            })
-
-            let requestData = {
-                centres: nearbyBoroughs,
-                latitude:postCodelocation.lat,
-                longitude: postCodelocation.lng
-            };
-            let nearbyBorough;
-            $.ajax({
-                url: "http://localhost:8080/api/centres/nearBy",
-                method: "POST",
-                contentType: "application/json",
-                dataType: "text",
-                data: JSON.stringify(requestData),
-                success: response => {
-                    nearbyBorough = JSON.parse(response);
-                    console.log( nearbyBorough)
-                    if (nearbyBorough === undefined){
-                        $("#results").text("Your postcode did not match any borough");
-                    }else{
-                        let divElement = "<div>";
-                        divElement += "<ul>"
-                        divElement += "<li>Borough: " + nearbyBorough.recyclingCentre.localAuthority+ "</li>";
-                        divElement += "<li>Collection day: " + nearbyBorough.recyclingCentre.collectionDay + "</li>";
-                        divElement += "</ul></div>"
-                        $("#results").html(divElement);
-                    }
-                },
-                error: response => {
-                    console.log(response);
-                },
-            });
-
-
-        }
     </script>
 </th:block>
 </body>
