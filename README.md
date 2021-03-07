@@ -32,3 +32,12 @@ Musharaf Ali (1930891)
 ```
 Timothy Marsh-Stamp (1912005)
 ```
+## Technologies Used
+### Front-end
+* HTML
+* CSS
+* JavaScript
+* Thymeleaf
+### Back-end
+* Spring Boot
+* MySQL

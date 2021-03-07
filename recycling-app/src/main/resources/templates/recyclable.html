@@ -1,15 +1,73 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragment/main_layout}"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/main_layout}">
+
 <head>
     <title>Recyclable items</title>
+    <link rel="stylesheet" th:href="@{/css/recyclable.css}" />
 </head>
+
 <body>
 <div layout:fragment="content">
-    <h1>Recyclable Items</h1>
+    <!--TITLE-->
+    <section class="Recycle">
+
+        <div class="Recycle-text"></div>
+        <h1>RECYCLABLE ITEMS</h1>
+    </section>
+
+    <!-- What Would you like to explore? -->
+    <section class="explore">
+        <div class="container grid">
+            <div class="explore-text">
+                <h1>What Would You Like To Explore?</h1>
+                <p>
+                    We want to bring ease to recycling and part of that means educating about the many everyday
+                    items that can be
+                    recycled. This page is for those who would like to understand what, and how to recycyle said
+                    items. You can
+                    either search for items in the box, or press the images below.
+                </p>
+            </div>
+            <div>
+                <!--Form-->
+                <form class=Recyclableform>
+                    <div class="input_container">
+                        <p>Search Recyclable Items</p>
+                        <!--<label for = "Recyclableitem"> What would you like to recycle? </label> -->
+                        <input type="text" id="Recyclableitem" name="Recyclableitem" size="50"><br><br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of material -->
+    <div class="row">
+        <div class="column">
+            <img th:src="@{/images/metal.png}" alt=metal style=width:100%>
+        </div>
+        <div class="column">
+            <img th:src="@{/images/bottles.jpg}" alt=plastic style=width:100%>
+        </div>
+        <div class="column">
+            <img th:src="@{/images/wood.jpg}" alt=wood style=width:100%>
+        </div>
+    </div>
 </div>
+
+<th:block layout:fragment="javascript">
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+    </script>
+
+</th:block>
+
 </body>
+
 </html>

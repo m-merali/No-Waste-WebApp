@@ -2,21 +2,17 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragment/main_layout}"
+      layout:decorate="~{fragments/main_layout}"
 >
 
 <head>
     <title>Recycling Locations</title>
 
-    <style type="text/css">
-        /* Set the size of the div element that contains the map */
-        #map {
-            height: 400px;
-            /* The height is 400 pixels */
-            width: 100%;
-            /* The width is the width of the web page */
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" th:href="@{/css/locations.css}"/>
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script th:src="@{'https://maps.googleapis.com/maps/api/js?key=' + ${@environment.getProperty('google.maps.api.key')} + '&callback=initMap&libraries=places&v=weekly'}"
@@ -88,7 +84,7 @@
                                     '<h5>Recycling Centre: ' + locationDis.recyclingCentre.name + '</h5>' +
                                     '<h5>Postcode: ' + locationDis.recyclingCentre.postcode + '</h5>' +
                                     '<h5> Distance: ' + parseFloat(locationDis.distance).toFixed(1) + ' km away</h5>' +
-                                    '</div>>'
+                                    '</div>'
                             }
                             markers.push(marker);
                         });
@@ -146,30 +142,55 @@
         }
     </script>
 
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+    </script>
+
 </head>
 
 <body>
 
 <div layout:fragment="content">
+    <!-- Title -->
+    <section class="Locations">
+        <div class="Locations-text"></div>
+        <h1>RECYCLING LOCATIONS</h1>
+    </section>
+
     <!-- Recycling Locations -->
-    <section class="Recycling Locations">
+    <section  class="recycling-locations">
         <div class="container grid">
-            <div class="mission-text">
-                <h1>Recycling Locations</h1>
-            </div>
-            <div class="row">
-                <div class="col-12 my-3">
-                    <form>
-                        <input type="text" id="txtPlaces" class="form-control" placeholder="Enter a location"/>
-                        <input type="reset" value="clear" class="btn-secondary btn ">
-                    </form>
-                </div>
+            <div class="recycling-locations-text">
+                <h3>
+                    Please enter your postcode below to find your nearest recycling centre
+                </h3>
+                <form>
+                    <input type="text" id="txtPlaces" placeholder="Postcode"/>
+                    <input type="reset" name="" value="Reset">
+                </form>
             </div>
         </div>
     </section>
     <!--The div element for the map -->
     <div id="map"></div>
 </div>
+
+<th:block layout:fragment="javascript">
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+    </script>
+
+</th:block>
 
 </body>
 

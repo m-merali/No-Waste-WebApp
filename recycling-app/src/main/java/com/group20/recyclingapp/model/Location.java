@@ -2,9 +2,9 @@ package com.group20.recyclingapp.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
-
 public class Location {
 
     @Id
@@ -14,7 +14,6 @@ public class Location {
     private double longitude;
     @NotEmpty
     private String address;
-
 
     public Location(Long latitude, Long longitude, String address) {
         this.latitude = latitude;

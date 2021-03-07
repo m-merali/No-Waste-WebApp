@@ -24,6 +24,8 @@ public class RecyclingCentre {
 	@NotEmpty
 	private String postcode;
 
+	private String collectionDay;
+
 	
 //Entity relationships often depend on the existence of another entity — for example,
 // the Person–Address relationship. Without the Person, the Address entity doesn't have any meaning of its own.
@@ -44,7 +46,8 @@ public class RecyclingCentre {
 						   @NotNull Integer telephone,
 						   @NotEmpty String url,
 						   @NotEmpty String postcode,
-						   Location location) {
+						   Location location,
+						   String collectionDay) {
 		this.name = name;
 		this.localAuthority = localAuthority;
 		this.email = email;
@@ -52,6 +55,7 @@ public class RecyclingCentre {
 		this.url = url;
 		this.postcode = postcode;
 		this.location = location;
+		this.collectionDay = collectionDay;
 	}
 
 	public RecyclingCentre() {
@@ -120,5 +124,13 @@ public class RecyclingCentre {
 
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+
+	public String getCollectionDay() {
+		return collectionDay;
+	}
+
+	public void setCollectionDay(String collectionDate) {
+		this.collectionDay = collectionDate;
 	}
 }
