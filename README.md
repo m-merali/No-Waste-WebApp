@@ -36,8 +36,8 @@ Timothy Marsh-Stamp (1912005)
 ### Front-end
 * HTML
 * CSS
-* JavaScript
 * Thymeleaf
 ### Back-end
 * Spring Boot
+* JavaScript
 * MySQL
