@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/main_layout}"
+>
+
+<head>
+    <title>Recycling Locations</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" th:href="@{/css/locations.css}"/>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script th:src="@{'https://maps.googleapis.com/maps/api/js?key=' + ${@environment.getProperty('google.maps.api.key')} + '&callback=initMap&libraries=places&v=weekly'}"
+            async></script>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of london
+            const london = {
+                lat: 51.5074,
+                lng: -0.1278
+            };
+            // The map, centered at London
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: london,
+            });
+
+            var markers = [];
+            var markersOnMap = [];
+
+
+            var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
+            google.maps.event.addListener(places, 'place_changed', function () {
+
+                //delete all markers on map
+                deleteAllMarkersOnMap();
+
+
+                var place = places.getPlace();
+                var latitude = place.geometry.location.lat();
+                var longitude = place.geometry.location.lng();
+
+                var userLocation = {
+                    lat: latitude,
+                    lng: longitude
+                };
+
+                map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 12,
+                    center: userLocation,
+                });
+
+                var marker1 = {
+                    coords: {lat: latitude, lng: longitude},
+                    content: '<h3>Your location</h3>'
+                };
+
+                // Array of markers
+                markers = [];
+                markers.push(marker1);
+
+
+                $.ajax({
+                    url: "/api/search",
+                    method: "POST",
+                    dataType: "text",
+                    data: {
+                        latitude: latitude,
+                        longitude: longitude
+                    },
+                    success: response => {
+                        var locationsAndDistance = JSON.parse(response);
+                        locationsAndDistance.forEach(locationDis => {
+                            var marker = {
+                                coords: {lat: locationDis.location.latitude, lng: locationDis.location.longitude},
+                                iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                                content: '<div>' +
+                                    '<h5>Recycling Centre: ' + locationDis.recyclingCentre.name + '</h5>' +
+                                    '<h5>Postcode: ' + locationDis.recyclingCentre.postcode + '</h5>' +
+                                    '<h5> Distance: ' + parseFloat(locationDis.distance).toFixed(1) + ' km away</h5>' +
+                                    '</div>'
+                            }
+                            markers.push(marker);
+                        });
+
+                        // Loop through markers
+                        for (var i = 0; i < markers.length; i++) {
+                            // Add marker
+                            addMarker(markers[i]);
+                        }
+
+                    },
+                    error: response => {
+                        console.log(response);
+                    },
+                });
+
+
+            });
+
+            // Add Marker Function
+            function addMarker(props) {
+                var marker = new google.maps.Marker({
+                    position: props.coords,
+                    map: map,
+                    //icon:props.iconImage
+                });
+
+                // Check for customicon
+                if (props.iconImage) {
+                    // Set icon image
+                    marker.setIcon(props.iconImage);
+                }
+
+                // Check content
+                if (props.content) {
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: props.content
+                    });
+
+                    marker.addListener('click', function () {
+                        infoWindow.open(map, marker);
+                    });
+                }
+
+                markersOnMap.push(marker)
+            }
+
+            function deleteAllMarkersOnMap() {
+                if (markersOnMap.length > 0) {
+                    for (let i = 0; i < markersOnMap.length; i++) {
+                        markersOnMap[i].setMap(null);
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+    </script>
+
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <!-- Title -->
+    <section class="Locations">
+        <div class="Locations-text"></div>
+        <h1>RECYCLING LOCATIONS</h1>
+    </section>
+
+    <!-- Recycling Locations -->
+    <section  class="recycling-locations">
+        <div class="container grid">
+            <div class="recycling-locations-text">
+                <h3>
+                    Please enter your postcode below to find your nearest recycling centre
+                </h3>
+                <form>
+                    <input type="text" id="txtPlaces" placeholder="Postcode"/>
+                    <input type="reset" name="" value="Reset">
+                </form>
+            </div>
+        </div>
+    </section>
+    <!--The div element for the map -->
+    <div id="map"></div>
+</div>
+
+<th:block layout:fragment="javascript">
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+    </script>
+
+</th:block>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+/* Locations title*/
+.Locations {
+  height: 400px;
+  background-image: url(../images/map-banner.jpg);
+  background-size: cover;
+  background-position: top;
+  text-align: center;
+  text-decoration: 10px underline;
+  text-decoration-color: #01a66c;
+  text-shadow: 0px 3px 15px black;
+  color: rgb(255, 255, 255);
+  font-size: 40px;
+  padding: 160px;
+  position: relative;
+}
+
+/* Set the size of the div element that contains the map */
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
+
+/* Find nearest recycling centre */
+.recycling-locations {
+  height: 200px;
+  position: relative;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.recycling-locations h1 {
+  font-size: 40px;
+}
+
+.recycling-locations p {
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+.recycling-locations h3 {
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+.recycling-locations .grid {
+  overflow: visible;
+  grid-template-columns: 55% auto;
+  gap: 30px;
+}
+
+input {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+input[type="text"] {
+  background: #fff;
+  width: 340px;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding: 0 25px;
+  border-radius: 25px 0 0 25px;
+  border: 2px solid black;
+}
+
+input[type="reset"] {
+  position: relative;
+  border-radius: 0 25px 25px 0;
+  width: 150px;
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: #ffc107;
+  border: 2px solid black;
+}

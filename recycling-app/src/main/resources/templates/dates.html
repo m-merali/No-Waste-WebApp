@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/main_layout}"
+>
+<head>
+    <title>Collection Dates</title>
+    <link rel="stylesheet" th:href="@{/css/dates.css}"/>
+</head>
+<body>
+<div layout:fragment="content">
+    <!-- Title -->
+    <section class="Collection">
+
+        <div class="Collection-text"></div>
+        <h1>COLLECTION DATES</h1>
+    </section>
+
+    <!-- Collection Section -->
+    <section class="collection-dates">
+        <div class="container grid">
+            <div class="collection-dates-text">
+                <h1>Check When Your Recycling Is Collected</h1>
+                <p>
+                    Please enter your postcode below
+                </p>
+                <form id="search-form">
+                    <input type="text" id="search" placeholder="Postcode">
+                    <input type="submit" name="" value="Search">
+
+                </form>
+                <div id="results">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection info title -->>
+    <section class="Collection-info-title">
+        <h1>COLLECTION INFO</h1>
+    </section>
+
+    <section class="collection-info-main my-2">
+        <div class="container grid grid-3">
+            <div class="card flex">
+                <i class="fas fa-home fa-3x"></i>
+                <p>If you live in a house on street level with your own front garden, you will probably have your own
+                    wheelie bin for rubbish and for recycling. </p>
+            </div>
+            <div class="card flex">
+                <i class="fas fa-shopping-bag fa-3x"></i>
+                <p>
+                    If you live in a street property without room for a wheelie bin, you may need to put your rubbish
+                    out in black sacks. Make sure these are tied up properly, and wrap any sharp items in newspaper so
+                    that they do not rip the sack open.
+                </p>
+            </div>
+            <div class="card flex">
+                <i class="fas fa-store fa-3x"></i>
+                <p>
+                    If you live above a shop then you may have shared bins, but you will probably need to put your
+                    rubbish out on the pavement for collection in black sacks. Make sure these are tied up properly, and
+                    wrap any sharp items in newspaper so that they do not rip the sack open.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+<th:block layout:fragment="javascript">
+    <script th:inline="javascript" type="text/javascript">
+        //set the api key (
+        var apiKey = /*[[${@environment.getProperty('google.maps.api.key')}]]*/ 'default';
+
+        //initialize the boroughs (recyclingCentre model)
+        let boroughs = [];
+
+        //initialize all localAuthorities in London
+        let localAuthoritiesInLondon = [];
+
+        let postCodeAddressComp = [];
+        let postCodelocation;
+
+        //fetch the recycling centres from the database
+        fetch("http://localhost:8080/api/centres", {
+            method: 'post',
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            }
+        })
+            .then(response => response.json())
+            .then(function (myBoroughs) {
+                //set the boroughs to the boroughs fetched from the database
+                boroughs = myBoroughs;
+            })
+            .catch(function (error) {
+                console.log('Request failed', error);
+            });
+
+        //fetch all the local authorities and postcodes in Inner London using opendata API
+        fetch("https://opendata.camden.gov.uk/resource/g3bz-7ur8.json?county_name=Inner%20London", {
+            method: 'get',
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            }
+        })
+            .then(response => response.json())
+            .then(function (localAuthoritiesInInnerLondon) {
+                //append the localAuthorities in Inner london to all the authorities in London
+                Array.prototype.push.apply(localAuthoritiesInLondon, localAuthoritiesInInnerLondon)
+
+            })
+            .catch(function (error) {
+                console.log('Request failed', error);
+            });
+
+        //fetch all the local authorities and postcodes in Outer London using opendata API
+        fetch("https://opendata.camden.gov.uk/resource/g3bz-7ur8.json?county_name=Outer%20London", {
+            method: 'get',
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            }
+        })
+            .then(response => response.json())
+            .then(function (localAuthoritiesInOuterLondon) {
+                //append the localAuthorities in Outer london to all the authorities in London
+                Array.prototype.push.apply(localAuthoritiesInLondon, localAuthoritiesInOuterLondon)
+            })
+            .catch(function (error) {
+                console.log('Request failed', error);
+            });
+
+        //event when the search postcode form is submitted
+        $("#search-form").submit((e)=>{
+            e.preventDefault();
+            let userPostcode = $("#search").val().trim().split(" ")[0];
+
+
+
+            //show the user that we are fetching their localAuthority
+            $("#results").text("Fetching your local authority...");
+
+            //local authority in which the post code belongs
+            let userLocalAuthority;
+
+            //find local authority in london whose postcode_1 is equal to user's postcode
+            //userLocalAuthority = localAuthoritiesInLondon.find(localAuthority => localAuthority.postcode_1.split(" ")[0] === userPostcode);
+            localAuthoritiesInLondon.map( localAuthority => {
+                if (localAuthority.postcode_1.split(" ")[0] === userPostcode || localAuthority.postcode_2.split(" ")[0] === userPostcode || localAuthority.postcode_3.split(" ")[0] === userPostcode){
+                    userLocalAuthority = localAuthority;
+                }
+            } )
+
+
+
+            //initialize user's postcode location
+            let userPostCodeLocation;
+
+            //get user's postcode location coordinates via google map API
+            let urlPostcode = "https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:"+ userPostcode +"|country:UK&key="+ apiKey;
+            $.ajax({
+                method: "get",
+                url : urlPostcode,
+                dataType: "text",
+                success: response=>{
+                    let data = JSON.parse(response);
+                    switch (data.status) {
+                        case "OK":
+                            $("#results").text("");
+                            //set user's postcode location
+                            userPostCodeLocation = data.results[0].geometry.location;
+                            break;
+                        case "ZERO_RESULTS":
+                            $("#results").text("Your postcode didn't match any location in google maps");
+                            break;
+                        default:
+                            console.log("error");
+                            break;
+                    }
+                    getCollectionDates();
+                }
+            });
+
+            function getCollectionDates() {
+                //get recycling centres (named as boroughs here) stored in the database whose localAuthority is equal to the user's localAuthority
+                //initialize recycling centres in users area as empty array
+                let recyclingCentresInUsersArea = [];
+
+                //check if there are recycling centres in the database
+                if (boroughs.length <= 0 ){
+                    $("#results").text("There are no recycling centres stored in the database");
+                    return;
+                }
+
+                if (userLocalAuthority === undefined){
+                    $("#results").text("Your postcode didn't match any borough in Inner or Outer London. Please try another postcode.");
+                    return;
+                }else{
+                    $("#results").text("");
+                }
+
+                //loop through all the boroughs(recycling centres) stored in database
+                boroughs.map(borough => {
+                    //check if this recycling centre's localAuthority matches userLocalAuthority's local_authority_name
+                    if (borough.localAuthority === userLocalAuthority.local_authority_name){
+                        //add this recycling centre to the array recyclingCentresInUsersArea
+                        recyclingCentresInUsersArea.push(borough);
+                    }
+                })
+
+                //check if there are recycling centres in database that match user's recycling centre
+                if (recyclingCentresInUsersArea.length <= 0){
+                    $("#results").text("There are no recycling centres or boroughs that match you local authority");
+                    return;
+                }
+
+                //if user's postcode was did not have results in google maps, return any recycling centre that matches their local authority
+                if (userPostCodeLocation === undefined){
+                    let divElement = "<div class='collection_dates_result'><small>Your postcode didn't match any location in google maps. You might not get the borough that is nearest to you</small>";
+                    divElement += "<ul>"
+                    divElement += "<ul>";
+                    divElement += "<li><strong>Borough:</strong> " + recyclingCentresInUsersArea[0].localAuthority+ "</li>";
+                    divElement += "<li><strong>Collection Day:</strong> " + recyclingCentresInUsersArea[0].collectionDay + "</li>";
+                    divElement += "</ul></div>"
+                    $("#results").html(divElement);
+                    return;
+                }
+
+                //since we now have recycling centres in users area, let's send them to the server where they will be compared to the user's postcode location and it will return the nearest recycling centre to the user
+                let requestData = {
+                    centres: recyclingCentresInUsersArea,
+                    latitude:userPostCodeLocation.lat,
+                    longitude: userPostCodeLocation.lng
+                };
+
+                let nearbyBorough;
+                $.ajax({
+                    url: "http://localhost:8080/api/centres/nearBy",
+                    method: "POST",
+                    contentType: "application/json",
+                    dataType: "text",
+                    data: JSON.stringify(requestData),
+                    success: response => {
+                        try {
+                            nearbyBorough = JSON.parse(response);
+                        }catch (e) {
+                            console.log(e)
+                        }
+                        if (nearbyBorough === undefined){
+                            $("#results").text("Your postcode did not match any borough saved in our database");
+                        }else{
+                            let divElement = "<div class='collection_dates_result'>";
+                            divElement += "<ul>"
+                            divElement += "<li><strong>Borough:</strong> " + nearbyBorough.recyclingCentre.localAuthority+ "</li>";
+                            divElement += "<li><strong>Collection Day:</strong> " + nearbyBorough.recyclingCentre.collectionDay + "</li>";
+                            divElement += "</ul></div>"
+                            $("#results").html(divElement);
+                        }
+                    },
+                    error: response => {
+                        console.log(response);
+                    },
+                });
+            }
+
+        })
+    </script>
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+
+    </script>
+</th:block>
+</body>
+</html>
