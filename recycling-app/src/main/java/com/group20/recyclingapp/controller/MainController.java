@@ -6,6 +6,7 @@ import com.group20.recyclingapp.repository.LocationRepository;
 import com.group20.recyclingapp.repository.RecyclableRepository;
 import com.group20.recyclingapp.repository.RecyclingCentreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -53,12 +54,31 @@ public class MainController {
     public String showRecyclable(){
         return "recyclable";
     }
+    @GetMapping("/recyclable/Metal")
+    public String showrecyclable_metal(){
+        return "recyclable_metal";
+    }
+    @GetMapping("/recyclable/Plastics")
+    public String showrecyclable_plastic(){
+        return "recyclable_plastic";
+    }
+    @GetMapping("/recyclable/Paper")
+    public String showrecyclable_paper(){
+        return "recyclable_paper";
+    }
+    @GetMapping("/search")
+    public String search(@Param ("Recyclableitem") String keyword){
+        System.out.println("Keyword: " + keyword);
+
+        return "search_result";
+    }
 
     @GetMapping("/centres")
     public String showRecyclingCentres(Model model) {
         model.addAttribute("recyclingCentres", recyclingCentreRepository.findAll());
         return "recycling-centres";
     }
+    
 
     @GetMapping("/centres/new")
     public String showAddRecyclingCentre(Model model) {

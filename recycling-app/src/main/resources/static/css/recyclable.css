@@ -67,11 +67,52 @@ input area
     display: flex;
     padding: 40px;
 }
-
-.column {
-    flex: 50px;
-    padding: 20px;
+.row1 {
+    padding: 40px;
+    display: flex;
 }
+
+img {
+    border-radius: 50%;
+    height: 400px;
+    width: 400px;
+    
+}
+.column {
+    flex: 30px;
+    padding: 30px;
+    position: center;
+    
+}
+
+.metal-container{
+    width: 50%;
+    margin: auto;
+    box-shadow: 1px 4px 8px 1px rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #333;
+    text-align: justify;
+}
+.metal-class{
+
+
+}
+.Metal-info-title{
+    height: 160px;
+    background-size: cover;
+    background-position: top;
+    text-align: center;
+    text-decoration: 10px underline;
+    text-decoration-color: #01a66c;
+    text-shadow: 0px 3px 20px black;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    padding-top:50px;
+    margin-top: -20px;
+    position: relative;
+  }
 
 /* Tablets and under */
 @media (max-width: 768px) {
