@@ -3,6 +3,7 @@ package com.group20.recyclingapp.controller;
 import com.group20.recyclingapp.model.Location;
 import com.group20.recyclingapp.model.RecyclingCentre;
 import com.group20.recyclingapp.repository.LocationRepository;
+import com.group20.recyclingapp.repository.RecyclableRepository;
 import com.group20.recyclingapp.repository.RecyclingCentreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
+import jdk.jfr.Timestamp;
+
 import javax.validation.Valid;
 import java.util.Optional;
+
 
 @Controller
 public class MainController {
@@ -25,6 +30,9 @@ public class MainController {
 
     @Autowired
     LocationRepository locationRepository;
+
+    @Autowired
+    RecyclableRepository recyclableRepository;
 
     @GetMapping("/")
     public String showIndex() {

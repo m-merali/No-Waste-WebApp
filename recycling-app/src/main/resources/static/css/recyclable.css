@@ -65,7 +65,7 @@ input area
 /*Images in a row*/
 .row {
     display: flex;
-    padding: 30px;
+    padding: 40px;
 }
 
 .column {
