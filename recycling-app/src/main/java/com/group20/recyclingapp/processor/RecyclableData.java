@@ -1,6 +1,6 @@
 package com.group20.recyclingapp.processor;
-import com.group20.recyclingapp.model.items;
-import com.group20.recyclingapp.repository.RecyclableRepository;
+//import com.group20.recyclingapp.model.items;
+//import com.group20.recyclingapp.repository.RecyclableRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,8 +9,8 @@ import java.util.List;
 
 public class RecyclableData {
     
-    @Autowired
-    private static RecyclableRepository recyclableRepository;
+   // @Autowired
+   // private static RecyclableRepository recyclableRepository;
 
     //public static List<items> search (String keyword){
 

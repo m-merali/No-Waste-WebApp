@@ -1,4 +1,4 @@
-package com.group20.recyclingapp.model;
+/*package com.group20.recyclingapp.model;
 
 import javax.persistence.*;
 import javax.persistence.EntityListeners;
@@ -34,4 +34,4 @@ public class items {
 
 }
 
-    
+    */
