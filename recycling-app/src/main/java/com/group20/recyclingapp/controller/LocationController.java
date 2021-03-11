@@ -100,7 +100,7 @@ public class LocationController {
 
     // basically the below methods are used to calculate the distance between users location and
     // recycling centres location.
-    //calculates great-circle distances between the two points – that is,
+    // calculates great-circle distances between the two points – that is,
     // the shortest distance over the earth’s surface – using the ‘Haversine’ formula.
 
    public Double calcDistanceFromCoordinatesInKm(double lat1, double long1, Double lat2, Double long2) {
@@ -112,7 +112,7 @@ public class LocationController {
                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dlong / 2) * Math.sin(dlong / 2);
 
        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 -a));
-
+        
        return radius * c;
 
    }

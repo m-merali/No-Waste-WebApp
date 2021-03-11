@@ -3,8 +3,10 @@ package com.group20.recyclingapp.controller;
 import com.group20.recyclingapp.model.Location;
 import com.group20.recyclingapp.model.RecyclingCentre;
 import com.group20.recyclingapp.repository.LocationRepository;
+//import com.group20.recyclingapp.repository.RecyclableRepository;
 import com.group20.recyclingapp.repository.RecyclingCentreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,8 +16,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
+import jdk.jfr.Timestamp;
+
 import javax.validation.Valid;
 import java.util.Optional;
+
 
 @Controller
 public class MainController {
@@ -25,6 +31,9 @@ public class MainController {
 
     @Autowired
     LocationRepository locationRepository;
+
+    //@Autowired
+    //RecyclableRepository recyclableRepository;
 
     @GetMapping("/")
     public String showIndex() {
@@ -45,12 +54,31 @@ public class MainController {
     public String showRecyclable(){
         return "recyclable";
     }
+    @GetMapping("/recyclable/Metal")
+    public String showrecyclable_metal(){
+        return "recyclable_metal";
+    }
+    @GetMapping("/recyclable/Plastics")
+    public String showrecyclable_plastic(){
+        return "recyclable_plastic";
+    }
+    @GetMapping("/recyclable/Paper")
+    public String showrecyclable_paper(){
+        return "recyclable_paper";
+    }
+    @GetMapping("/search")
+    public String search(@Param ("Recyclableitem") String keyword){
+        System.out.println("Keyword: " + keyword);
+
+        return "search_result";
+    }
 
     @GetMapping("/centres")
     public String showRecyclingCentres(Model model) {
         model.addAttribute("recyclingCentres", recyclingCentreRepository.findAll());
         return "recycling-centres";
     }
+    
 
     @GetMapping("/centres/new")
     public String showAddRecyclingCentre(Model model) {

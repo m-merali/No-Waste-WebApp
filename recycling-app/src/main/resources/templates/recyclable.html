@@ -31,11 +31,11 @@
             </div>
             <div>
                 <!--Form-->
-                <form class=Recyclableform>
+                <form class=Recyclableform th:action = "@{/search}" method="get">
                     <div class="input_container">
                         <p>Search Recyclable Items</p>
                         <!--<label for = "Recyclableitem"> What would you like to recycle? </label> -->
-                        <input type="text" id="Recyclableitem" name="Recyclableitem" size="50"><br><br>
+                        <input type="search" id="Recyclableitem" name="Recyclableitem" size="50"><br><br>
                     </div>
                 </form>
             </div>
@@ -45,13 +45,16 @@
     <!-- Table of material -->
     <div class="row">
         <div class="column">
-            <img th:src="@{/images/metal.png}" alt=metal style=width:100%>
+            <a href = "recyclable/Metal">
+            <img th:src="@{/images/metal.png}" alt=metal style=width:400px></a>
         </div>
         <div class="column">
-            <img th:src="@{/images/bottles.jpg}" alt=plastic style=width:100%>
+            <a href = "recyclable/Plastics">
+            <img th:src="@{/images/bottles.jpg}" alt=plastic style=width:400px></a>
         </div>
         <div class="column">
-            <img th:src="@{/images/wood.jpg}" alt=wood style=width:100%>
+            <a href = "recyclable/Paper">
+            <img th:src="@{/images/paper.png}" alt=paper style=width:400px></a>
         </div>
     </div>
 </div>
