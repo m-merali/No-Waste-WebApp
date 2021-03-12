@@ -6,46 +6,70 @@
 >
 <head>
     <title>Recycling Centres</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <link rel="stylesheet" th:href="@{/css/utilities.css}"/>
+    <link rel="stylesheet" th:href="@{/css/centres.css}"/>
+    <link rel="stylesheet" th:href="@{/css/dark-mode.css}"/>
 </head>
 
 <body>
 <div layout:fragment="content">
-    <h1>Recycling Centres</h1>
-    <div class="table-responsive row">
-        <p><a th:href="@{/centres/new}" class="btn btn-sm btn-primary">Add New</a></p>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Local Authority</th>
-                <th scope="col">Email</th>
-                <th scope="col">Telephone</th>
-                <th scope="col">Postcode</th>
-                <td>
-                    Action
-                </td>
-            </tr>
-            </thead>
-            <body>
-            <tr th:each="centre : ${recyclingCentres}">
-                <td th:text="${centre.name}"></td>
-                <td th:text="${centre.localAuthority}"></td>
-                <td th:text="${centre.email}"></td>
-                <td th:text="${centre.telephone}"></td>
-                <td th:text="${centre.postcode}"></td>
-                <td class="d-flex justify-content-between">
-                    <a th:href="@{${centre.url}}" target="_blank" class="btn btn-secondary btn-sm">Visit</a>
-                    <a th:href="@{/centres/edit/{id}(id=${centre.id})}" class="btn btn-primary btn-sm">Edit</a>
-                    <a th:href="@{/centres/delete/{id}(id=${centre.id})}" class="btn btn-danger btn-sm">Delete</a>
-                </td>
-            </tr>
-            </body>
-        </table>
+
+    <!-- Title -->
+    <section class="Recycling-centres">
+
+        <div class="Recycling-centres-text"></div>
+        <h1>RECYCLING CENTRES</h1>
+    </section>
+
+
+    <div class="button-area">
+        <p><a th:href="@{/centres/new}" class="btn-add">Add New</a></p>
     </div>
+    <section class="table">
+        <div class="container grid">
+            <table class="content-table">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Local Authority</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telephone</th>
+                    <th scope="col">Postcode</th>
+                    <td>
+                        Action
+                    </td>
+                </tr>
+                </thead>
+                <body>
+                <tr th:each="centre : ${recyclingCentres}">
+                    <td th:text="${centre.name}"></td>
+                    <td th:text="${centre.localAuthority}"></td>
+                    <td th:text="${centre.email}"></td>
+                    <td th:text="${centre.telephone}"></td>
+                    <td th:text="${centre.postcode}"></td>
+                    <td class="d-flex justify-content-between">
+                        <a th:href="@{${centre.url}}" target="_blank" class="btn-visit">Visit</a>
+                        <a th:href="@{/centres/edit/{id}(id=${centre.id})}" class="btn-edit">Edit</a>
+                        <a th:href="@{/centres/delete/{id}(id=${centre.id})}" class="btn-delete">Delete</a>
+                    </td>
+                </tr>
+                </body>
+            </table>
+        </div>
+    </section>
+
 </div>
+
+<th:block layout:fragment="javascript">
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+    </script>
+
+</th:block>
 
 
 </body>

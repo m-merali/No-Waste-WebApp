@@ -1,0 +1,146 @@
+/* Recycling Centres title*/
+.Recycling-centres {
+    height: 400px;
+    background-image: url(../images/moving-man-recycling.jpg);
+    background-size: cover;
+    background-position: top;
+    text-align: center;
+    text-decoration: 10px underline;
+    text-decoration-color: #01a66c;
+    text-shadow: 0px 3px 15px black;
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    padding: 160px;
+    position: relative;
+}
+
+.button-area {
+    padding-left: 170px;
+}
+
+.btn-add {
+    background-color: #0290d6;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.btn-add:hover {
+    background-color: #dad9dc;
+    color: black;
+}
+
+.btn-visit {
+    background-color: #0290d6;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.btn-visit:hover {
+    background-color: #dad9dc;
+    color: black;
+}
+
+.btn-edit {
+    background-color: #84818c;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.btn-edit:hover {
+    background-color: #dad9dc;
+    color: black;
+}
+
+.btn-delete {
+    background-color: #c41224;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.btn-delete:hover {
+    background-color: #dad9dc;
+    color: black;
+}
+
+.table {
+    position: relative;
+}
+
+.table .grid {
+    overflow: visible;
+    grid-template-columns: 150% auto;
+    gap: 30px;
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 20px;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    color: black;
+}
+
+.content-table thead tr {
+    background-color: #009879;
+    color: black;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    background-color: #01a66c;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #a6f5c3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
