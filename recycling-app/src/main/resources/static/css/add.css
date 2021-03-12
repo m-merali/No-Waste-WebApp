@@ -1,0 +1,108 @@
+/* Add recycling centres title*/
+.Add-recycling-centre {
+    height: 400px;
+    background-image: url(../images/globe.jpg);
+    background-size: cover;
+    background-position: top;
+    text-align: center;
+    text-decoration: 10px underline;
+    text-decoration-color: #01a66c;
+    text-shadow: 0px 3px 15px black;
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    padding: 160px;
+    position: relative;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=url] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-add {
+    background-color: #0290d6;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.form-section {
+    position: relative;
+}
+
+.form-section .grid {
+    overflow: visible;
+    grid-template-columns: 150% auto;
+    gap: 30px;
+}
+
+.form-section {
+    padding-bottom: 20px;
+}
+
+/* Enter details section */
+.enter-details {
+    height: 200px;
+    position: relative;
+    text-align: center;
+    padding:20px;
+}
+
+.enter-details h1 {
+    font-size: 40px;
+}
+
+.enter-details .grid {
+    overflow: visible;
+    grid-template-columns: 120% auto;
+    gap: 30px;
+}
+
+.form-label{
+    font-size: 20px;
+}
+
+

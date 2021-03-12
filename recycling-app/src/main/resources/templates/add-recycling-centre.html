@@ -5,12 +5,12 @@
       layout:decorate="~{fragments/main_layout}"
 >
 <head>
-    <title>New Recycling Centre</title>
+    <title>Add Recycling Centre</title>
+    <link rel="stylesheet" th:href="@{/css/add.css}"/>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script th:src="@{'https://maps.googleapis.com/maps/api/js?key=' + ${@environment.getProperty('google.maps.api.key')} + '&callback=initMap&libraries=places&v=weekly'}"
             async></script>
+
     <script type="text/javascript">
         // google.maps.event.addDomListener(window, 'load', function () {
         function initMap() {
@@ -28,75 +28,104 @@
             });
         }
     </script>
-    <link rel="stylesheet" th:href="@{/css/utilities.css}"/>
 </head>
 
 <body>
 <div layout:fragment="content">
 
+    <!-- Title -->
+    <section class="Add-recycling-centre">
 
-    <h1>New Recycling Centre</h1>
-    <div class="row">
-        <form th:action="@{/centres/new}" method="post" th:object="${centre}">
-            <div class="mb-3">
+        <div class="Add-recycling-centre-text"></div>
+        <h1>ADD RECYCLING CENTRES</h1>
+    </section>
+
+    <!-- Enter details section -->
+    <section  class="enter-details">
+        <div class="container grid">
+            <div class="enter-details-text">
+                <h1>
+                    Please enter the following details to add a recycling centre
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <div class ="form-section">
+        <div class="container grid">
+            <form th:action="@{/centres/new}" method="post" th:object="${centre}">
+
                 <label class="form-label">Name</label>
                 <input type="text" th:field="*{name}" class="form-control" aria-describedby="emailHelp">
                 <div class="form-text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-            </div>
-            <div class="mb-3">
+
+
                 <label class="form-label">Local Authority</label>
                 <input type="text" th:field="*{localAuthority}" class="form-control" aria-describedby="emailHelp">
                 <div class="form-text text-danger" th:if="${#fields.hasErrors('localAuthority')}"
                      th:errors="*{localAuthority}"></div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">email</label>
+
+
+                <label class="form-label">Email</label>
                 <input type="text" th:field="*{email}" class="form-control" aria-describedby="emailHelp">
                 <div class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Website url</label>
+
+
+                <label class="form-label">Website URL</label>
                 <input type="url" th:field="*{url}" class="form-control" aria-describedby="emailHelp">
                 <div class="form-text text-danger" th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></div>
-            </div>
-            <div class="mb-3">
+
+
                 <label class="form-label">Telephone</label>
                 <input type="number" th:field="*{telephone}" class="form-control" aria-describedby="emailHelp">
                 <div class="form-text text-danger" th:if="${#fields.hasErrors('postcode')}"
                      th:errors="*{postcode}"></div>
-            </div>
-            <div class="mb-3">
+
+
                 <label class="form-label">Postcode</label>
                 <input type="text" th:field="*{postcode}" class="form-control" aria-describedby="emailHelp">
                 <div class="form-text text-danger" th:if="${#fields.hasErrors('postcode')}"
                      th:errors="*{postcode}"></div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Collection and time</label>
+
+
+                <label class="form-label">Collection Day and Time</label>
                 <input type="text" th:field="*{collectionDay}" class="form-control" aria-describedby="emailHelp">
                 <div class="form-text text-danger" th:if="${#fields.hasErrors('collectionDay')}"
                      th:errors="*{collectionDay}"></div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Location</label>
-                <input type="text" id="txtPlaces" class="form-control" placeholder="Enter a location"/>
+
+
+                <label class="form-label">Enter Postcode</label>
+                <input type="text" id="txtPlaces" class="form-control" placeholder="Enter a postcode"/>
                 <div class="form-text text-danger" th:if="${#fields.hasErrors('location')}"
                      th:errors="*{location}"></div>
-            </div>
-            <div class="mb-3">
+
+
                 <input type="number" step="any" id="latitude" readonly th:field="*{location.latitude}" class="form-control"/>
-            </div>
-            <div class="mb-3">
+
+
                 <input type="number" step="any" id="longitude" readonly th:field="*{location.longitude}" class="form-control"/>
-            </div>
-            <div class="mb-3">
+
+
                 <input type="text" id="address" readonly th:field="*{location.address}" class="form-control"/>
-            </div>
-            <button type="submit" class="btn btn-primary">Add New</button>
-        </form>
+
+                <button type="submit" class="btn-add">Add New</button>
+            </form>
+        </div>
     </div>
+
 </div>
 
+<th:block layout:fragment="javascript">
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+    </script>
+
+</th:block>
 
 
 </body>
