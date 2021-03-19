@@ -1,0 +1,30 @@
+
+  
+    
+  .centre{
+    height: 400px;
+    background-image: url(../images/faq.jpeg);
+    background-size: cover;
+    background-position: top;
+    text-align: center;
+    text-decoration: 10px underline;
+    text-decoration-color: #01a66c;
+    text-shadow: 0px 3px 15px black;
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    padding: 160px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+  .explore h1{
+    background-color: grey;
+    margin-bottom: 1rem;
+    padding: 5px;
+    padding-left: 10px;
+  }
+
+  .explore p{
+    margin-bottom: 10px;
+    padding-left: 30px;
+  }

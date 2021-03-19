@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/main_layout}">
+
+<head>
+    <title>Plastic</title>
+    <link rel="stylesheet" th:href="@{/css/recyclable.css}" />
+    <style>
+      div.b {
+         font-size: 150%;
+            }
+        </style>
+</head>
+
+<body>
+<div layout:fragment="content"> 
+    <!--TITLE-->
+    <section class="Recycle">
+
+        <div class="Recycle-text"></div>
+        <h1>RECYCLABLE ITEMS</h1>
+    </section>
+
+            <!--  Metal info tile-->
+<section class="Metal-info-title">
+    <h1>PLASTIC INFO</h1>
+</section>
+
+<!-- <section class="metal-info-main my-2"> -->
+    <div class= "metal-container">
+    <div class = "metal-class">
+      <div class="b">
+        
+          <ul>
+            <li> * plastics can be recycled. The simplest way to remember which plastics can currently be recycled is to <br>
+                   remember the following phrase: "If the item has a #1 or #2 <br>
+                   on the bottom and the neck is smaller than the base, you can recycle it!" </li>
+           <li> * Please don't put any of the following plastic items in your recycling bin: <br>
+                  motor oil containers, yogurt and margarine tubs even if it has a #1 or #2, or microwave trays. Reuse plastics <br>
+                  instead of throwing them away and purchasing new. Some shops allow to return worn out bags for new ones. </li>
+               <li> * Plastics last for hundred of years. Worst, they tend to be broken 
+                      down into micro plastics which can have devastating effects on marine life <br>
+                     and animals on top of those food chains.
+               <li> * In addition,it requires lots of fossil fuels to make and releases <br>
+                       tonns of pollutants in the air. This is compounded by the fact that <br>
+                       different plastics do not mix well and cannot be recycled. 
+                <li> * Plastics are also very easily
+                       tossed away rather than recycled/reused and end up in the ocean. </li>
+
+            
+            </ul>
+        
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<th:block layout:fragment="javascript">
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+
+        /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+    
+    </script>
+
+</th:block>
+</body>
+
+</html>

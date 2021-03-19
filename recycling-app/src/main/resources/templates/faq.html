@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/main_layout}"> 
+<head>
+    <title>FAQ</title>
+    <!-- <link rel="stylesheet" th:href="@{/css/faq.css}"/> -->
+     <link rel="stylesheet"  th:href="@{/css/faq.css}" /> 
+</head>
+<body>
+ <div layout:fragment="content"> 
+     
+
+    <div class="centre">
+    <h1>Frequently Asked Questions</h1>
+    </div>
+
+    <section class="explore">
+        <h1>1.What is recycling?</h1>
+        <p> Recycling is the process of collecting and processing materials that would otherwise be thrown away as trash and turning them into new products. Recycling can benefit your community, the economy and the environment.</p>
+
+        <h1>2.How does recycling save energy?</h2>
+
+        <p>When we make new products out of virgin materials, we expend energy to extract and process those materials. This includes burning fossil fuels. However, if we manufacture products using recycled materials, we reduce the need for virgin materials and save the energy required to extract and process them.<br>
+
+            To estimate how much energy you can save by recycling certain products, EPA has developed a tool called the individual Waste Reduction Model (iWARM). This tool calculates how much energy you save by recycling aluminum cans, glass or plastic bottles, magazines or plastic grocery bags, and shows you how long those savings could power different electrical appliances.</p>
+        
+
+            <h1>3.What should I never put in my recycling bin(s)?</h1>
+
+            <p> 1.Garden hoses<br>
+                2.Sewing needles<br>
+                3.Bowling balls<br>
+                4.Food or food-soiled paper<br>
+                5.Propane tanks or cylinders<br>
+                6.Aerosol cans that aren’t empty<br>
+                Many communities have collection programs for household hazardous waste to reduce the potential harm posed by these chemicals. In the Earth 911 database, EXIT search for “household hazardous waste collection” near your zip code. Additionally, contact your local environmental, health or solid waste agency to learn about permanent or periodic household hazardous waste collections near you.<br>
+                Syringes, broken glass, and broken light bulbs should not go in the recycling nor in the regular garbage stream. Please consult your local waste authority for information on ways to correctly discard these items in your area without risking injury to collection workers.
+                </p>
+            <h1>4.What are the most common items that I can put into my curbside recycling bin?</h3>
+
+            <p>1.Cardboard<br>
+                2.Paper<br>
+                3.Food boxes<br>
+                4.Mail<br>
+                5.Beverage cans<br>
+                6.Food cans<br>
+                7.Glass bottles<br>
+                8.Jars (glass and plastic)<br>
+                9.Jugs<br>
+                10.Plastic bottles and caps<br>
+                Generally, these are the most commonly recycled items. Please confirm with your local recycling provider first before putting these items in your curbside recycling bin, however, since what is accepted depends on your area.
+                
+                </p>
+
+                <h1>5.Can I recycle materials with food residue or does the material have to be perfectly clean?</h1>
+                <p>While we provide general guidance below, please check with your local recycling provider first for area-specific guidance.<br><br>
+                    
+                    Generally:<br>
+                    Plastic, metal and glass materials must be empty and rinsed clean of food debris before being recycled. Paper materials must be empty, clean and dry before being recycled. Wet paper/food-soiled paper products may be compostable.
+                    
+                    </p>
+            </section>
+                
+    
+        </div>
+
+
+
+ <th:block layout:fragment="javascript">
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+    </script>
+
+ </th:block>
+</body>
+</html>

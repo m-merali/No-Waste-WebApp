@@ -45,6 +45,29 @@ public class MainController {
     public String showRecyclable(){
         return "recyclable";
     }
+<<<<<<< Updated upstream:MainController.java
+=======
+    @GetMapping("/metal")
+    public String showmetal(){
+        return "metal";
+    }
+    @GetMapping("plastic")
+    public String showplastic(){
+        return "plastic";
+    }
+    @GetMapping("/paper")
+    public String showpaper(){
+        return "paper";
+    }
+
+    @GetMapping("/faq")
+    public String showfaq(){
+        return "faq";
+    }
+    @GetMapping("/search")
+    public String search(@Param ("Recyclableitem") String keyword){
+        System.out.println("Keyword: " + keyword);
+>>>>>>> Stashed changes:recycling-app/src/main/java/com/group20/recyclingapp/controller/MainController.java
 
     @GetMapping("/faq")
     public String showfaq(){

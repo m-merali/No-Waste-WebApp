@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/main_layout}">
+
+<head>
+    <title>Paper</title>
+    <link rel="stylesheet" th:href="@{/css/recyclable.css}" />
+    <style>
+      div.b {
+         font-size: 150%;
+            }
+        </style>
+</head>
+
+<body>
+<div layout:fragment="content"> 
+    <!--TITLE-->
+    <section class="Recycle">
+
+        <div class="Recycle-text"></div>
+        <h1>RECYCLABLE ITEMS</h1>
+    </section>
+
+            <!--  Metal info tile-->
+<section class="Metal-info-title">
+    <h1>PAPER INFO</h1>
+</section>
+
+<!-- <section class="metal-info-main my-2"> -->
+    <div class= "metal-container">
+    <div class = "metal-class">
+      <div class="b">
+        
+          <ul>
+            <li> * These can be easily recycled in most places. However, a mistake often made <br>
+              is that people add items to recycling that are not recyclable.<br> 
+              Common mistakes involve leaving food residue on their cardboards.  </li>
+        
+             <li> * Paper requires more energy to produce than plastic. About 3 times as much. In addition, it is also generally heavier<br> 
+              to transport than plastic resulting in high vehicle emissions. </li> 
+             <li> * However recycled paper is far more energy efficient using 70% less when made than raw materials.  </li>
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<th:block layout:fragment="javascript">
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+
+        /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+    
+    </script>
+
+</th:block>
+</body>
+
+</html>

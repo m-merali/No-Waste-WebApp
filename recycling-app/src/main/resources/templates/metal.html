@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/main_layout}">
+
+<head>
+    <title>metal</title>
+    <link rel="stylesheet" th:href="@{/css/recyclable.css}" />
+    <style>
+      div.b {
+         font-size: 150%;
+            }
+        </style>
+</head>
+
+<body>
+<div layout:fragment="content"> 
+    <!--TITLE-->
+    <section class="Recycle">
+
+        <div class="Recycle-text"></div>
+        <h1>RECYCLABLE ITEMS</h1>
+    </section>
+
+            <!--  Metal info tile-->
+<section class="Metal-info-title">
+    <h1>Metal & ALUMINIUM INFO</h1>
+</section>
+
+<!-- <section class="metal-info-main my-2"> -->
+    <div class= "metal-container">
+    <div class = "metal-class">
+      <div class="b">
+        
+          <ul>
+              <li> * Plastics and Aluminium are often recycled together. </li>
+              <li> * Make sure they are thoroughly cleaned and placed on the right recycling bins.</li>
+              <li> * Infinitely and easily recyclable. </li>
+              <li> * Most abundant element, and metal on the earths crust.</li>
+              <li> * As a result, it is one of the most widely used and common materials, making up cars, bikes, drink cans etc. </li>
+              <li> * Aluminium production requires an immense amount of energy, suing large amounts if water and causes soil pollution. </li>
+              <li> * Transportation also leaves a notable carbon footprint. However, recycling aluminium would decrease the need for making more. </li>
+              <li> * Statistics say about 54% of Americans recycle their cans.</li>
+            
+            </ul>
+        
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<th:block layout:fragment="javascript">
+    <script>
+        var content = document.getElementsByTagName('body')[0];
+        var darkMode = document.getElementById('dark-mode');
+        darkMode.addEventListener('click', function () {
+            darkMode.classList.toggle('active');
+            content.classList.toggle('night');
+        })
+
+        /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+    
+    </script>
+
+</th:block>
+</body>
+
+</html>
