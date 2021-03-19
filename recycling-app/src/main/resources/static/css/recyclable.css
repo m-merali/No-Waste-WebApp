@@ -14,6 +14,7 @@
     position: relative;
 }
 
+
 /* What would you like to explore?*/
 .explore{
     padding: 20px;
@@ -81,12 +82,17 @@ img {
 .column {
     flex: 30px;
     padding: 30px;
-    position: center;
-    
+    position: center;  
+}
+
+.column h1{
+    color: black;
+    display: flex;
+    justify-content: center;
 }
 
 .metal-container{
-    width: 50%;
+    width: 100%;
     margin: auto;
     box-shadow: 1px 4px 8px 1px rgba(0,0,0,0.3);
     padding: 20px;
@@ -94,11 +100,11 @@ img {
     background-color: #fff;
     color: #333;
     text-align: justify;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
-.metal-class{
 
-
-}
 .Metal-info-title{
     height: 160px;
     background-size: cover;
@@ -110,7 +116,8 @@ img {
     color: rgb(255, 255, 255);
     font-size: 30px;
     padding-top:50px;
-    margin-top: -20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     position: relative;
   }
 

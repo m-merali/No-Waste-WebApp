@@ -1,15 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en" 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{fragments/main_layout}">
 
 <head>
     <title>Recyclable items</title>
     <link rel="stylesheet" th:href="@{/css/recyclable.css}" />
-    <link rel="stylesheet" th:href="@{/css/dark-mode.css}"/>
+    <style>
+        .dropbtn {
+          background-color: rgb(59, 59, 59);
+          color: white;
+          padding: 30px;
+          font-size: 40px;
+          border: none;
+          cursor: pointer;
+          border-radius: 15px;
+        }
+        
+        .dropbtn:hover, .dropbtn:focus {
+          background-color: black;
+        }
+        
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .dropdown-content {
+          display: none;
+          position: relative;
+          background-color: #f1f1f1;
+          min-width: 160px;
+          overflow: auto;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+        
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        
+        .dropdown a:hover {background-color: #ddd;}
+        
+        .show {display: block;}
+        </style>
 </head>
 
 <body>
-<div layout:fragment="content">
+<div layout:fragment="content"> 
     <!--TITLE-->
     <section class="Recycle">
 
@@ -31,14 +73,15 @@
                 </p>
             </div>
             <div>
-                <!--Form-->
-                <form class=Recyclableform th:action = "@{/search}" method="get">
-                    <div class="input_container">
-                        <p>Search Recyclable Items</p>
-                        <!--<label for = "Recyclableitem"> What would you like to recycle? </label> -->
-                        <input type="search" id="Recyclableitem" name="Recyclableitem" size="50"><br><br>
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Select an item</button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <a href="plastic">PLASTIC</a>
+                      <a href="paper">PAPER</a>
+                      <a href="metal">METAL</a>
                     </div>
-                </form>
+                  </div>
+                
             </div>
         </div>
     </section>
@@ -46,19 +89,26 @@
     <!-- Table of material -->
     <div class="row">
         <div class="column">
-            <a href = "recyclable/Metal">
-            <img th:src="@{/images/metal.png}" alt=metal style=width:400px></a>
+          <a href="metal">
+            <h1>Metal</h1> <br />
+            <img th:src="@{/images/metal.jpeg}" alt=metal style=width:100%>
+          </a>
         </div>
         <div class="column">
-            <a href = "recyclable/Plastics">
-            <img th:src="@{/images/bottles.jpg}" alt=plastic style=width:400px></a>
+          <a href="plastic">
+            <h1>Plastic</h1><br />
+            <img th:src="@{/images/bottles.jpg}" alt=plastic style=width:100%>
+          </a>
         </div>
         <div class="column">
-            <a href = "recyclable/Paper">
-            <img th:src="@{/images/paper.png}" alt=paper style=width:400px></a>
+          <a href="paper">
+            <h1>Paper</h1> <br />
+            <img th:src="@{/images/paper21.jpeg}" alt=wood style=width:100%>
+          </a>
         </div>
     </div>
 </div>
+
 
 <th:block layout:fragment="javascript">
     <script>
@@ -68,10 +118,29 @@
             darkMode.classList.toggle('active');
             content.classList.toggle('night');
         })
+
+        /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
     </script>
 
 </th:block>
-
 </body>
 
 </html>

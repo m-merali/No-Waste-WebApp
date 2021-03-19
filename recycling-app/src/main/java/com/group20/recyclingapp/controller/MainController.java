@@ -54,17 +54,26 @@ public class MainController {
     public String showRecyclable(){
         return "recyclable";
     }
-    @GetMapping("/recyclable/Metal")
-    public String showrecyclable_metal(){
-        return "recyclable_metal";
+    @GetMapping("/plastic")
+    public String showplastic(){
+        return "plastic";
     }
-    @GetMapping("/recyclable/Plastics")
-    public String showrecyclable_plastic(){
-        return "recyclable_plastic";
+
+    @GetMapping("/paper")
+    public String showpaper(){
+        return "paper";
     }
-    @GetMapping("/recyclable/Paper")
-    public String showrecyclable_paper(){
-        return "recyclable_paper";
+
+
+
+    @GetMapping("/metal")
+    public String showmetal(){
+        return "metal";
+    }
+
+    @GetMapping("/faq")
+    public String showfaq(){
+        return "faq";
     }
     @GetMapping("/search")
     public String search(@Param ("Recyclableitem") String keyword){
