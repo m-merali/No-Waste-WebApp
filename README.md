@@ -1,3 +1,7 @@
+### This was a group project I worked on for my seccond year in university
+### Below are the details
+
+
 # No Waste ♻️ (Group 20)
 ## Project
 Our group project works towards tackling UN Sustainable Development Goal 13, which is Climate Action. Our group idea is a recycling web application with the aim of reducing global warming. This can be done by reducing greenhouse gas emissions through recycling. The objectives of the app are:
